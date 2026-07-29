@@ -3,9 +3,10 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Лор Романа",
+    pageTitle: "Сайт DIRK.INTJ",
     provider: "plausible",
     baseUrl: "dirk-intj.github.io",
+	locale: "ru-RU",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
