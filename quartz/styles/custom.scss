@@ -1,12 +1,22 @@
 @use "./variables.scss" as *;
 
-// Растягиваем левый проводник папок и убираем внутренний скроллбар
-.explorer {
-  max-height: none !important; // Снимаем лимит Кварца по высоте
-  overflow-y: visible !important; // Разрешаем блоку занимать всё пространство
+// Полная ликвидация внутреннего скроллбара папок Кварца
+#explorer-content {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
-// Для красоты: полностью прячем серую полосу прокрутки браузера в левой панели
-.explorer::-webkit-scrollbar {
-  display: none;
+div.explorer-content {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+// Прячем системный серый ползунок прокрутки для всех браузеров
+#explorer-content::-webkit-scrollbar,
+div.explorer-content::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
