@@ -1,3 +1,12 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// Растягиваем левый проводник папок и убираем внутренний скроллбар
+.explorer {
+  max-height: none !important; // Снимаем лимит Кварца по высоте
+  overflow-y: visible !important; // Разрешаем блоку занимать всё пространство
+}
+
+// Для красоты: полностью прячем серую полосу прокрутки браузера в левой панели
+.explorer::-webkit-scrollbar {
+  display: none;
+}
