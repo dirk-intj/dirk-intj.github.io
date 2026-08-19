@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "plugins": {
+    "obsidian-plugin-ttrpg-tools-maps": {
+      "source": "github:quartz-community/obsidian-plugin-ttrpg-tools-maps",
+      "resolved": "https://github.com/quartz-community/obsidian-plugin-ttrpg-tools-maps.git",
+      "commit": "57947dbafb129735d09a7908f8ecb33cfd1e4626",
+      "installedAt": "2026-08-19T18:26:06.831Z"
+    }
+  }
+}

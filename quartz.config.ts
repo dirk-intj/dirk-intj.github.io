@@ -1,5 +1,7 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import * as TTRPGMaps from "./.quartz/plugins/obsidian-plugin-ttrpg-tools-maps"
+
 
 const config: QuartzConfig = {
   configuration: {
@@ -48,6 +50,7 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Latex({ renderEngine: "katex" }),
+	  TTRPGMaps.TTRPGMapTransformer(), 
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
@@ -60,6 +63,7 @@ const config: QuartzConfig = {
       Plugin.Assets(),
       Plugin.Static(),
       Plugin.NotFoundPage(),
+	  TTRPGMaps.TTRPGMapEmitter(), 
     ],
   },
 }
