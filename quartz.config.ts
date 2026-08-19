@@ -64,6 +64,18 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.NotFoundPage(),
 	  TTRPGMaps.TTRPGMapEmitter(), 
+	  Plugin.Graph({
+		localGraph: {
+		// Настройки локального графа (который на страницах)
+				},
+		globalGraph: {
+    // Настройки глобального графа (большой паутины)
+    // Добавляем строчку, которая отсекает папку manual:
+			removeTags: [], // если используете теги
+			},
+  // Самая главная опция, которая отфильтрует файлы по пути:
+			filterFn: (node) => !node.slug?.startsWith("manual/")
+			}),
     ],
   },
 }
