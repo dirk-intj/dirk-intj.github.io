@@ -203,8 +203,7 @@ plugins:
   - source: "@quartz-community/footer"
     enabled: true
     options:
-      text: "<b>Возрастная категория: 18+</b> (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории.<br><br>© Hiddenheið, Dirk.Intj, 2026–. Все права защищены."
-      links:
+        links:
         GitHub: https://github.com/
         Discord Community: https://discord.gg/
     layout:

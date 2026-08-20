@@ -28,3 +28,22 @@ div.explorer-content::-webkit-scrollbar {
   }
 }
 
+footer p, 
+footer ul {
+  display: none !important;
+}
+
+// 2. Верстаем на этом пустом месте ваш красивый, чистый HTML-дисклеймер
+footer::after {
+  content: "Возрастная категория: 18+ (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории. \A\A © Hiddenhade, Dirk.Intj, 2026. Все права защищены. \A\A Создано с помощью Quartz v5";
+  white-space: pre-wrap; // Без этой строчки переносы \A\A не сработают как абзацы!
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: gray;
+  line-height: 1.5;
+  padding: 20px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
