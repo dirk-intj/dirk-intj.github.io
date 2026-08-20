@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: ru-RU
+  locale: en-US
   baseUrl: dirk-intj.github.io
   ignorePatterns:
     - private
