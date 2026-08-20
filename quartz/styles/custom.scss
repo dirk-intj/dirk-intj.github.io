@@ -28,45 +28,65 @@ div.explorer-content::-webkit-scrollbar {
   }
 }
 
+// Монументальная полировка футера: Дисклеймер + Копирайт + Родные ссылки
 footer {
   display: flex;
-  flex-direction: column; // Выстраиваем элементы строго друг под другом
+  flex-direction: column; // Выстраиваем все элементы строго друг под другом
   align-items: center;
-  gap: 12px; // Отступ между дисклеймером и подписью
-  padding: 30px 0;
-  border-top: 1px dashed var(--lightgray); // Красивая архивная черта сверху
+  gap: 6px; // Красивый отступ между этажами
+  padding: 12px 0;
+  border-top: 1px dashed var(--lightgray); // Строгая архивная черта сверху
 
-  // 1. Создаем ваш легальный текстовый щит 18+ над подписью
+  // ЭТАЖ 1: Юридический дисклеймер 18+ на самом верху
   &::before {
     content: "Возрастная категория: 18+ (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории.";
     display: block;
     text-align: center;
-    font-size: 11px;
-    color: var(--gray); // Используем блеклый системный серый цвет Кварца
+    font-size: 12px;
+    color: var(--gray); // Блеклый системный серый цвет
     line-height: 1.4;
-    max-width: 800px; // Чтобы текст не растягивался сосиской, а лежал блоком
+    max-width: 800px;
     font-weight: normal;
   }
 
-  // 2. Полируем вшитую строку "Created with Quartz..." под дисклеймером
+  // ЭТАЖ 2: Твой личный копирайт прямо ПЕРЕД строкой Кварца
+  p::before {
+    content: "© HiddenHade | Dirk.Intj | 2026. Все права защищены. \A\A ";
+    white-space: pre-wrap; // Заставляет \A\A сработать как перенос строки
+    display: block;
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+
+  // ЭТАЖ 3: Полировка родной строчки Кварца (делаем её тише и аккуратнее)
   p, .quartz-footer-text {
     margin: 0 !important;
-    font-size: 10px !important; // Делаем её совсем крошечной
-    color: var(--darkgray) !important; // Смягчаем цвет, чтобы она не бросалась в глаза
+    font-size: 14px !important; // Крошечный размер
+    color: var(--darkgray) !important;
+    text-align: center;
     
     a {
       color: var(--darkgray) !important;
       text-decoration: none;
       
       &:hover {
-        text-decoration: underline; // Ссылка подчеркнется только при наведении
+        text-decoration: underline;
       }
     }
   }
 
-  // Убираем уродливые дефолтные списки ссылок, если они пустые или мешают
-  //ul {
-  //  display: none !important;
-  //}
+  // Родные ссылки плагина (GitHub, Discord) теперь ОСТАЮТСЯ и аккуратно встают в самый низ
+  ul {
+    display: flex !important; // Возвращаем их на экран
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0 !important;
+    gap: 15px;
+    font-size: 10px;
+  }
 }
+
 
