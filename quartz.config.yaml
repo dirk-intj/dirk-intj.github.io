@@ -202,8 +202,8 @@ plugins:
       priority: 10
 layout:
   # ... другие параметры (head, header и т.д.)
-  footer:
-    - source: "./quartz/components/Footer.tsx" # Указываем локальный путь к твоему HTML-коду!
+    footer:
+      - source: "./quartz/components/Footer.tsx" # Указываем локальный путь к твоему HTML-коду!
 
   - source: "@quartz-community/recent-notes"
     enabled: false
