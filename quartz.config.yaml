@@ -32,13 +32,13 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#fff23688"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
+        light: "#003247"
+        lightgray: "#1E293B"
         gray: "#646464"
         darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
+        dark: "#F3E6C9"
+        secondary: "#749AA6"
+        tertiary: "#991B1B"
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
