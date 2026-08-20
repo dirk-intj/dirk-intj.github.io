@@ -33,7 +33,7 @@ footer {
   display: flex;
   flex-direction: column; // Выстраиваем все элементы строго друг под другом
   align-items: center;
-  gap: 2px; // Красивый отступ между этажами
+  gap: 4px; // Красивый отступ между этажами
   padding: 21px 0;
   border-top: 1px dashed var(--lightgray); // Строгая архивная черта сверху
 
@@ -51,13 +51,13 @@ footer {
 
   // ЭТАЖ 2: Твой личный копирайт прямо ПЕРЕД строкой Кварца
   p::before {
-    content: "© HiddenHade | Dirk.Intj | 2026. Все права защищены. \A ";
+    content: "© Hiddenheið | Dirk.Intj | 2026. Все права защищены. \A ";
     white-space: pre-wrap; // Заставляет \A сработать как перенос строки
     display: block;
     font-size: 16px;
     color: var(--darkgray);
     font-weight: normal;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
   }
 
   // ЭТАЖ 3: Полировка родной строчки Кварца (делаем её тише и аккуратнее)
@@ -78,14 +78,20 @@ footer {
   }
 
   // Родные ссылки плагина (GitHub, Discord) теперь ОСТАЮТСЯ и аккуратно встают в самый низ
-  ul {
-    display: flex !important; // Возвращаем их на экран
+ul {
+    display: flex !important;
     justify-content: center;
     list-style: none;
     padding: 0;
-    margin: 5px 0 0 0 !important;
+    margin: 0 !important;
     gap: 15px;
     font-size: 10px;
+    
+    // Принудительно заставляем ссылки встать в самый низ подвала
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); // Идеальная центровка по экрану
   }
 }
 
