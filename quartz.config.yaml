@@ -17,16 +17,17 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Inter
-      body: Source Sans 3
-      code: IBM Plex Mono
-      googleFonts:                  # Вот этот блок вы пропустили
-      - name: "Inter"
-        styles: []                # Пустые скобки означают "скачать стандартный набор"
+      header: "Plus Jakarta Sans" # Строгий, красивый шрифт для меню и графа
+      body: "Source Sans 3"       # Родная замена Source Sans Pro с кириллицей
+      code: "IBM Plex Mono"       # Ваш технический моноширинный шрифт
+    
+    googleFonts:
+      - name: "Plus Jakarta Sans"
+        styles: [400, 600, 700]
       - name: "Source Sans 3"
-        styles: []
+        styles: [400, 600]
       - name: "IBM Plex Mono"
-        styles: []
+        styles: [400]
     colors:
       lightMode:
         light: "#faf8f8"
