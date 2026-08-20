@@ -204,8 +204,8 @@ plugins:
     enabled: true
     options:
         links:
-        GitHub: https://github.com/
-        Discord Community: https://discord.gg/
+            GitHub: https://github.com/
+            Discord Community: https://discord.gg/
     layout:
      position: footer
      priority: 50
