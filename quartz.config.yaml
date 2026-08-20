@@ -206,6 +206,7 @@ plugins:
         links:
             GitHub: https://github.com/
             Discord Community: https://discord.gg/
+            GitHub: https://github.com/
     layout:
      position: footer
      priority: 50
