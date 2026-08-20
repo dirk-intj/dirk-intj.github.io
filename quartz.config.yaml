@@ -200,15 +200,11 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-  - source: "@quartz-community/footer"
-    enabled: true
-    options:
-        links:
-        GitHub: https://github.com/
-        Discord Community: https://discord.gg/
-    layout:
-     position: footer
-     priority: 50
+layout:
+  # ... другие параметры (head, header и т.д.)
+  footer:
+    - source: "./quartz/components/Footer.tsx" # Указываем локальный путь к твоему HTML-коду!
+
   - source: "@quartz-community/recent-notes"
     enabled: false
   - source: "@quartz-community/spacer"

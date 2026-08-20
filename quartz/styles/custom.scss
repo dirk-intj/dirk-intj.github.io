@@ -28,79 +28,11 @@ div.explorer-content::-webkit-scrollbar {
   }
 }
 
-// Монументальная полировка футера: Дисклеймер + Копирайт + Родные ссылки
-footer {
-  display: flex;
-  flex-direction: column; // Выстраиваем все элементы строго друг под другом
-  align-items: center;
-  gap: 4px; // Красивый отступ между этажами
-  padding: 21px 0;
-  border-top: 1px dashed var(--lightgray); // Строгая архивная черта сверху
 
-  // ЭТАЖ 1: Юридический дисклеймер 18+ на самом верху
-  &::before {
-    content: "Возрастная категория: 18+ (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора.";
-    display: block;
-    text-align: center;
-    font-size: 12px;
-    color: var(--gray); // Блеклый системный серый цвет
-    line-height: 1.4;
-    max-width: 800px;
-    font-weight: normal;
-	 margin-bottom: 4px;
-  }
-
-  // ЭТАЖ 2: Твой личный копирайт прямо ПЕРЕД строкой Кварца
-  p::before {
-    content: "© Hiddenheið | Dirk.Intj | 2026. Все права защищены. \A ";
-    white-space: pre-wrap; // Заставляет \A сработать как перенос строки
-    display: block;
-    font-size: 16px;
-    color: var(--darkgray);
-    font-weight: normal;
-    margin-bottom: -1px;
-  }
-
-  // ЭТАЖ 3: Полировка родной строчки Кварца (делаем её тише и аккуратнее)
-  p, .quartz-footer-text {
-    margin: 0 !important;
-    font-size: 16px !important; // Крошечный размер
-    color: var(--darkgray) !important;
-    text-align: center;
-    
-    a {
-      color: var(--darkgray) !important;
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 
  
-}
 
-// Фиксированная шапка сайта при скролле
-.page > header {
-  position: fixed; // Прибивает шапку к экрану намертво
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; // Ставит шапку поверх любого скроллящегося текста
-  
-  // Добавляем полупрозрачный фон, чтобы текст под шапкой красиво размывался
-  background-color: rgba(var(--light), 0.85) !important; 
-  backdrop-filter: blur(8px); // Эффект размытия заднего плана (как в iOS/Windows)
-  
-  border-bottom: 1px solid var(--lightgray); // Строгая разделительная черта
-  padding: 10px 20px;
-}
 
-// Сдвигаем основное тело сайта вниз, чтобы шапка не перекрывала верх текста
-.page .center, 
-.page .sidebar {
-  margin-top: 60px !important; 
-}
+
 
 
