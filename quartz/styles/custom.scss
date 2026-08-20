@@ -47,6 +47,7 @@ footer {
     line-height: 1.4;
     max-width: 800px;
     font-weight: normal;
+	 margin-bottom: 4px;
   }
 
   // ЭТАЖ 2: Твой личный копирайт прямо ПЕРЕД строкой Кварца
@@ -57,7 +58,7 @@ footer {
     font-size: 16px;
     color: var(--darkgray);
     font-weight: normal;
-    margin-bottom: -5px;
+    margin-bottom: -1px;
   }
 
   // ЭТАЖ 3: Полировка родной строчки Кварца (делаем её тише и аккуратнее)
@@ -77,22 +78,7 @@ footer {
     }
   }
 
-  // Родные ссылки плагина (GitHub, Discord) теперь ОСТАЮТСЯ и аккуратно встают в самый низ
-ul {
-    display: flex !important;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0 !important;
-    gap: 15px;
-    font-size: 10px;
-    
-    // Принудительно заставляем ссылки встать в самый низ подвала
-    position: absolute;
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%); // Идеальная центровка по экрану
-  }
+ 
 }
 
 
