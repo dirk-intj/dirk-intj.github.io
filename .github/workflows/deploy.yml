@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - name: Inject Legal HTML Disclaimer
         run: |
-          find content -name "*.md" -type f -exec sh -c 'echo "" >> "{}"; echo "<div class=\"legal-disclaimer\" style=\"margin-top: 40px; padding-top: 20px; border-top: 1px dashed gray; font-family: sans-serif; text-align: center;\"><p style=\"font-size: 11px; color: gray; line-height: 1.4;\"><b>Возрастная категория: 18+</b> (Запрещено для детей в соответствии с ФЗ № 436-ФЗ). <br /> Все материалы данного ресурса являются художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории.</p><p style=\"font-size: 11px; color: gray;\">© HiddenHade | Цитадель Созидателя | 2026. Все права защищены.</p></div>" >> "{}"' \;
+          find content -name "*.md" -type f -exec sh -c 'echo "" >> "{}"; echo "<div class=\"legal-disclaimer\" style=\"margin-top: 20px; padding-top: 10px; border-top: 1px dashed gray; font-family: sans-serif; text-align: center;\"><p style=\"font-size: 12px; color: gray; line-height: 1.4;\"><b> Возрастная категория: 18+</b> (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора.</p><p style=\"font-size: 16px; color: dark-gray;\">© Hiddenheið | Dirk.Intj | 2026. Все права защищены.</p></div>" >> "{}"' \;
       - run: npx quartz build
       - uses: actions/upload-pages-artifact@v3
         with:
