@@ -20,6 +20,13 @@ configuration:
       header: Inter
       body: Source Sans 3
       code: IBM Plex Mono
+      googleFonts:                  # Вот этот блок вы пропустили
+      - name: "Inter"
+        styles: []                # Пустые скобки означают "скачать стандартный набор"
+      - name: "Source Sans 3"
+        styles: []
+      - name: "IBM Plex Mono"
+        styles: []
     colors:
       lightMode:
         light: "#faf8f8"
