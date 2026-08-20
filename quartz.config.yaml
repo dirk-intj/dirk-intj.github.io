@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Hiddenheið
+  pageTitle: Quartz 5
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -17,17 +17,9 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: "Plus Jakarta Sans" # Строгий, красивый шрифт для меню и графа
-      body: "Source Sans 3"       # Родная замена Source Sans Pro с кириллицей
-      code: "IBM Plex Mono"       # Ваш технический моноширинный шрифт
-    
-    googleFonts:
-      - name: "Plus Jakarta Sans"
-        styles: [400, 600, 700]
-      - name: "Source Sans 3"
-        styles: [400, 600]
-      - name: "IBM Plex Mono"
-        styles: [400]
+      header: Schibsted Grotesk
+      body: Helvatica
+      code: IBM Plex Mono
     colors:
       lightMode:
         light: "#faf8f8"
