@@ -207,8 +207,8 @@ plugins:
         GitHub: https://github.com/
         Discord Community: https://discord.gg/
     layout:
-      position: footer
-      priority: 50
+     position: footer
+     priority: 50
   - source: "@quartz-community/recent-notes"
     enabled: false
   - source: "@quartz-community/spacer"

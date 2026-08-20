@@ -28,22 +28,45 @@ div.explorer-content::-webkit-scrollbar {
   }
 }
 
-footer p, 
-footer ul {
-  display: none !important;
-}
+footer {
+  display: flex;
+  flex-direction: column; // Выстраиваем элементы строго друг под другом
+  align-items: center;
+  gap: 12px; // Отступ между дисклеймером и подписью
+  padding: 30px 0;
+  border-top: 1px dashed var(--lightgray); // Красивая архивная черта сверху
 
-// 2. Верстаем на этом пустом месте ваш красивый, чистый HTML-дисклеймер
-footer::after {
-  content: "Возрастная категория: 18+ (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории. \A\A © Hiddenhade, Dirk.Intj, 2026. Все права защищены. \A\A Создано с помощью Quartz v5";
-  white-space: pre-wrap; // Без этой строчки переносы \A\A не сработают как абзацы!
-  display: block;
-  text-align: center;
-  font-size: 11px;
-  color: gray;
-  line-height: 1.5;
-  padding: 20px 0;
-  max-width: 800px;
-  margin: 0 auto;
+  // 1. Создаем ваш легальный текстовый щит 18+ над подписью
+  &::before {
+    content: "Возрастная категория: 18+ (Запрещено для детей в соответствии с Федеральным законом № 436-ФЗ). Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора и предназначены исключительно для совершеннолетней аудитории.";
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray); // Используем блеклый системный серый цвет Кварца
+    line-height: 1.4;
+    max-width: 800px; // Чтобы текст не растягивался сосиской, а лежал блоком
+    font-weight: normal;
+  }
+
+  // 2. Полируем вшитую строку "Created with Quartz..." под дисклеймером
+  p, .quartz-footer-text {
+    margin: 0 !important;
+    font-size: 10px !important; // Делаем её совсем крошечной
+    color: var(--darkgray) !important; // Смягчаем цвет, чтобы она не бросалась в глаза
+    
+    a {
+      color: var(--darkgray) !important;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline; // Ссылка подчеркнется только при наведении
+      }
+    }
+  }
+
+  // Убираем уродливые дефолтные списки ссылок, если они пустые или мешают
+  //ul {
+  //  display: none !important;
+  //}
 }
 
