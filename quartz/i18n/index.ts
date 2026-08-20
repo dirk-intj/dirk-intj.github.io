@@ -65,6 +65,7 @@ export const TRANSLATIONS = {
   "ar-MR": ar,
   "uk-UA": uk,
   "ru-RU": ru,
+  "ru-ru": ru,
   "ko-KR": ko,
   "zh-CN": zh,
   "zh-TW": zhTw,

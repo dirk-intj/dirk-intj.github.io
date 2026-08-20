@@ -8,7 +8,7 @@ const config: QuartzConfig = {
     pageTitle: "Сайт DIRK.INTJ",
     provider: "plausible",
     baseUrl: "dirk-intj.github.io",
-	locale: "ru-RU",
+	locale: "en-US",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
