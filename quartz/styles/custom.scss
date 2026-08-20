@@ -22,7 +22,9 @@ div.explorer-content::-webkit-scrollbar {
 }
 
 // Принудительное исправление шрифта для русского интерфейса
- .explorer, .graph {
+.explorer, .graph {
+  &, * {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  }
 }
 
