@@ -18,7 +18,7 @@ configuration:
     cdnCaching: true
     typography:
       header: Schibsted Grotesk
-      body: Helvatica
+      body: Source Sans Pro
       code: IBM Plex Mono
     colors:
       lightMode:
