@@ -22,11 +22,32 @@ div.explorer-content::-webkit-scrollbar {
   height: 0 !important;
 }
 
+h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  
+  // Если заголовки в статьях кажутся слишком массивными, 
+  // здесь ты можешь точечно управлять их жирностью (600 — полужирный, 700 — жирный):
+  font-weight: 600 !important; 
+}
+
 // Принудительное исправление шрифта для русского интерфейса
-.explorer, .graph {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+.explorer {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+
+  // Обычные текстовые ссылки и кнопки папок в меню оставляем тонкими
   a, span, button {
-    font-weight: 400 !important; 
+    font-family: inherit !important;
+    font-weight: 400 !important; // Сбрасываем лишнюю толщину букв в меню
+  }
+
+  // Расстояние между строками в боковом меню (чтобы папки не липли)
+  ul, li {
+    line-height: 1.5 !important;
+  }
+
+  // Твой фирменный красный ховер при наведении мыши на элементы меню
+  a:hover, button:hover, .folder-button:hover + a, .folder-title:hover {
+    color: #D12630 !important;
   }
 }
 
