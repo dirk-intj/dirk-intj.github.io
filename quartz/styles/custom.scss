@@ -85,6 +85,9 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     margin-top: 0px !important;      // Полностью обнуляем верхний внешний отступ
  //   //line-height: 1.5 !important;   // Делаем межстрочный интервал текста внутри плашки чуть плотнее
   }
+  .callout-icon {
+ padding: .4rem 0 !important;
+  }
 }
 
 .toc {
