@@ -87,7 +87,28 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
+.toc {
+  // Сам заголовок оглавления (слово "On this page" или "Оглавление")
+  button, .toc-header {
+    font-family: var(--bodyFont), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-weight: 600 !important; // Оставляем заголовок оглавления плотным
+    letter-spacing: -0.01em !important;
+  }
 
+  // ХИТРЫЙ ХОД: Хватаем все ссылки на разделы статьи внутри правого меню
+  li, a {
+    font-family: var(--bodyFont), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-weight: 400 !important; // Делаем пункты оглавления аккуратными и ТОНКИМИ
+    line-height: 1.4 !important; // Зажимаем межстрочный интервал, чтобы меню не растягивалось
+    font-size: 0.95rem !important; // Делаем шрифт оглавления чуть меньше основного текста для опрятности
+  }
+
+  // Твой красный ховер при наведении мыши на пункты оглавления
+  a:hover {
+    color: #D12630 !important;
+    background-color: transparent !important; // Убираем стандартный задний фон при наведении, если он мешает
+  }
+}
  
 
 
