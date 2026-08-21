@@ -71,7 +71,7 @@ npx quartz build --serve
 
 ## Development Server
 
-The `--serve` flag starts a local web server. This server is intended for development and previewing only. It is not designed for production use. For information on how to deploy your site, see [[hosting]].
+The `--serve` flag starts a local web server. This server is intended for development and previewing only. It is not designed for production use. For information on how to deploy your site, see [[Тестовая страница]].
 
 ### Hot Reloading
 

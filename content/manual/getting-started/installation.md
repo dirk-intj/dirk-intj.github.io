@@ -95,7 +95,7 @@ npx quartz build --serve
 
 Your site is now running at `http://localhost:8080`. The dev server watches for file changes and reloads automatically.
 
-At this point you can [[authoring-content|start writing content]] in the `content/` folder. When you're ready to publish, continue below to push your site to GitHub and [[hosting|deploy it]].
+At this point you can [[authoring-content|start writing content]] in the `content/` folder. When you're ready to publish, continue below to push your site to GitHub and [[Тестовая страница|deploy it]].
 
 ---
 
@@ -157,5 +157,5 @@ npx quartz sync
 ## Next Steps
 
 - **[[authoring-content|Authoring Content]]** — Write and organize your notes
-- **[[hosting|Hosting]]** — Deploy your site to GitHub Pages, Cloudflare, Netlify, or Vercel
+- **[[Тестовая страница|Hosting]]** — Deploy your site to GitHub Pages, Cloudflare, Netlify, or Vercel
 - **[[configuration|Configuration]]** — Customize your site's appearance and behavior

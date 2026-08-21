@@ -190,7 +190,7 @@ For non-GitHub CI providers (Cloudflare, Vercel, Netlify), the build command sho
 npx quartz plugin install && npx quartz build
 ```
 
-See [[hosting]] for provider-specific setup details.
+See [[Тестовая страница]] for provider-specific setup details.
 
 ## Setting Your Default Branch to v5
 
@@ -205,7 +205,7 @@ After verifying your site builds and deploys correctly, update your repository's
 This ensures that new clones, pull requests, and GitHub Pages deployments all target v5 by default. Your old v4 branch remains available for reference.
 
 > [!warning] Update your CI triggers
-> If your CI workflow triggers on a specific branch (e.g. `branches: [v4]`), make sure to update it to `v5`. See the [[hosting]] guide for examples.
+> If your CI workflow triggers on a specific branch (e.g. `branches: [v4]`), make sure to update it to `v5`. See the [[Тестовая страница]] guide for examples.
 
 ## Notes for Quartz 3 Users
 
@@ -220,7 +220,7 @@ If you're coming from Quartz 3 (the Hugo-based version), follow the same steps a
 
 ### Things to update
 
-- Update your deploy scripts — see the [[hosting]] guide.
+- Update your deploy scripts — see the [[Тестовая страница]] guide.
 - Ensure your default branch on GitHub is updated to `v5`.
 - [[folder and tag listings|Folder and tag listings]] have changed:
   - Folder descriptions go under `content/<folder-name>/index.md`
