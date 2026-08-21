@@ -30,14 +30,18 @@ div.explorer-content::-webkit-scrollbar {
   }
 }
 
-body, p, li {
-  font-size: 18px; /* Пропорциональное увеличение через относительные единицы */
-}
-
-.page .content {
-  p, li {
-    line-height: 1.65 !important; // Стандарт в Quartz обычно 1.4-1.5, мы делаем свободнее
-    margin-bottom: 1.1rem;       // Добавляем немного воздуха между самими абзацами
+.center article {
+  p {
+    font-size: 1.125rem !important;  // Твои идеальные 18px для основного текста
+    line-height: 1.65 !important;   // Воздух между строками строго в абзацах
+    margin-bottom: 1.2rem !important; // Расстояние между абзацами
+  }
+  
+  // Если в тексте статьи есть списки (To-Do или буллеты), им тоже добавляем интервал
+  li {
+    font-size: 1.125rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 0.5rem !important; // Чтобы списки внутри статьи не слипались
   }
 }
 
