@@ -49,6 +49,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 
   ul, li {
     line-height: 1.5 !important; // Интервал между папками
+    font-size: 1.15rem !important;
   }
 
   a:hover, button:hover, .folder-button:hover + a, .folder-title:hover {
