@@ -22,47 +22,54 @@ div.explorer-content::-webkit-scrollbar {
   height: 0 !important;
 }
 
-h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
+// 0. ГЛОБАЛЬНОЕ СГЛАЖИВАНИЕ И СИНХРОНИЗАЦИЯ ТЕЛА САЙТА
+// Этот блок убирает «пиксельную резкость» и делает буквы мягкими, как в Obsidian
+body, html, .page {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-  
-  // Если заголовки в статьях кажутся слишком массивными, 
-  // здесь ты можешь точечно управлять их жирностью (600 — полужирный, 700 — жирный):
-  font-weight: 600 !important; 
+  -webkit-font-smoothing: antialiased !important;  // Мягкое сглаживание для Mac/iOS
+  -moz-osx-font-smoothing: grayscale !important;    // Мягкое сглаживание для Firefox
+  text-rendering: optimizeLegibility !important;    // Оптимизация читаемости букв
 }
 
-// Принудительное исправление шрифта для русского интерфейса
+// 1. ШРИФТ ДЛЯ ВСЕХ ЗАГОЛОВКОВ НА САЙТЕ
+h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-weight: 600 !important; // Полужирный, аккуратный вес без раздувания
+  letter-spacing: -0.02em !important; // Слегка сжимаем заголовки, чтобы убрать резкость
+}
+
+// 2. ТОЧЕЧНАЯ НАСТРОЙКА БОКОВОГО МЕНЮ (EXPLORER)
 .explorer {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
 
-  // Обычные текстовые ссылки и кнопки папок в меню оставляем тонкими
   a, span, button {
     font-family: inherit !important;
-    font-weight: 400 !important; // Сбрасываем лишнюю толщину букв в меню
+    font-weight: 400 !important; // Тонкие, опрятные надписи в меню
   }
 
-  // Расстояние между строками в боковом меню (чтобы папки не липли)
   ul, li {
-    line-height: 1.5 !important;
+    line-height: 1.5 !important; // Интервал между папками
   }
 
-  // Твой фирменный красный ховер при наведении мыши на элементы меню
   a:hover, button:hover, .folder-button:hover + a, .folder-title:hover {
-    color: #D12630 !important;
+    color: #D12630 !important; // Твой глубокий красный ховер
   }
 }
 
+// 3. ОСНОВНОЙ ТЕКСТ СТАТЕЙ (ЦЕНТРАЛЬНАЯ КОЛОНКА)
 .center article {
   p {
-    font-size: 1.125rem !important;  // Твои идеальные 18px для основного текста
-    line-height: 1.65 !important;   // Воздух между строками строго в абзацах
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 1.2rem !important;  // Твои идеальные 18px
+    line-height: 1.65 !important;   // Свободный воздух между строками
     margin-bottom: 1.2rem !important; // Расстояние между абзацами
   }
   
-  // Если в тексте статьи есть списки (To-Do или буллеты), им тоже добавляем интервал
   li {
-    font-size: 1.125rem !important;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 1.2rem !important;
     line-height: 1.65 !important;
-    margin-bottom: 0.5rem !important; // Чтобы списки внутри статьи не слипались
+    margin-bottom: 0.5rem !important;
   }
 }
 
