@@ -5,6 +5,7 @@
   max-height: none !important;
   height: auto !important;
   overflow: visible !important;
+  font-size: 18px;
 }
 
 div.explorer-content {
@@ -23,15 +24,22 @@ div.explorer-content::-webkit-scrollbar {
 
 // Принудительное исправление шрифта для русского интерфейса
 .explorer, .graph {
-  &, * {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  a, span, button {
+    font-weight: 400 !important; 
   }
 }
 
 body, p, li {
-  font-size: 1.2rem; /* Пропорциональное увеличение через относительные единицы */
+  font-size: 18px; /* Пропорциональное увеличение через относительные единицы */
 }
 
+.page .content {
+  p, li {
+    line-height: 1.65 !important; // Стандарт в Quartz обычно 1.4-1.5, мы делаем свободнее
+    margin-bottom: 1.1rem;       // Добавляем немного воздуха между самими абзацами
+  }
+}
 
 
  

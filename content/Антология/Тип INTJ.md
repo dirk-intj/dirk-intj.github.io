@@ -1,5 +1,5 @@
 ---
-title: 🧩Hiddenheið - Тип INTJ
+title: 🧩Тип INTJ
 ---
 ### 🧩 Кто такой INTJ?
 
