@@ -5,7 +5,7 @@ import * as TTRPGMaps from "./.quartz/plugins/obsidian-plugin-ttrpg-tools-maps"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Сайт DIRK.INTJ",
+    pageTitle: "Сайт Hiddenhade DIRK.INTJ",
     provider: "plausible",
     baseUrl: "dirk-intj.github.io",
 	locale: "ru-RU",

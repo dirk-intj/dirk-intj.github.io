@@ -76,7 +76,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 .callout {
   // Заставляем заголовок плашки быть плотным и аккуратным
   .callout-title {
-    //line-height: 1.2 !important; // Минимальный интервал для шапки плашки
+    line-height: 1 !important; // Минимальный интервал для шапки плашки
    padding-bottom: 0 !important; // Зажимаем внутренний отступ снизу
   }
 
