@@ -113,6 +113,12 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     background-color: transparent !important; // Убираем стандартный задний фон при наведении, если он мешает
   }
 }
+
+// Скрыть список только там, где прописан cssclasses: hide-listing
+.hide-listing .page-listing {
+  display: none;
+}
+
  
 
 
