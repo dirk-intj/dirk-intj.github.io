@@ -608,11 +608,14 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
   // Базовый стиль для 3 плашек внутри правой карточки
   .callout {
+    width: 100% !important;
+    box-sizing: border-box !important; // Чтобы рамки 1px не выпирали за пределы 220px
     background-color: var(--light) !important;
     border: 1px solid var(--lightgray) !important;
     border-radius: 10px !important;
     padding: 1rem 1.2rem !important;
     margin: 0 !important;
+
 
     & > .callout-title {
       display: none !important;
@@ -799,13 +802,4 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 }
 
 
-// Режим чтения («книжечка»): ужимаем ТОЛЬКО правый сайдбар, оставляя левый и центр на месте
-.page > #quartz-body:has(.sidebar.right.collapsed),
-.page > #quartz-body:has(.collapsed) {
-  grid-template-columns: 320px 1fr 40px !important; // Сжимаем правую колонку до узкой полоски (40px), чтобы её можно было вернуть наведением
 
-  // При наведении мыши на правую область — плавно возвращаем правый сайдбар
-  &:has(.sidebar.right:hover) {
-    grid-template-columns: 320px 1fr 320px !important;
-  }
-}
