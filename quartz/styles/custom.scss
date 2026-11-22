@@ -585,3 +585,174 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 body:has(.callout[data-callout="card"]:hover) > .popover {
   display: none !important;
 }
+
+
+
+// 8. КАРТОЧКА ПЕРСОНАЖА / ЛИЧНОЕ ДЕЛО ( cssclasses: [character] )
+.character {
+  // 1. Верхний паспорт-досье ( > [!dossier] )
+  .callout[data-callout="dossier"] {
+    background-color: var(--light) !important;
+    border: 1px solid var(--lightgray) !important;
+    border-top: 3px solid #D12630 !important; // Фирменный красный верхний кант
+    border-radius: 10px !important;
+    padding: 1.1rem 1.35rem !important;
+    margin: 1.25rem 0 1.75rem 0 !important;
+
+    & > .callout-title {
+      display: none !important;
+    }
+
+    // Таблица на 3 колонки: ТИП | ПОРТРЕТ | АРХЕТИП
+    table {
+      width: 100% !important;
+      margin: 0 0 1rem 0 !important;
+      border-collapse: collapse !important;
+
+      th {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.05em !important;
+        color: var(--darkgray) !important;
+        border-bottom: 1px solid var(--lightgray) !important;
+        padding: 0.4rem 0.65rem !important;
+      }
+
+      td {
+        padding: 0.65rem !important;
+        vertical-align: top !important;
+        border-bottom: 1px solid var(--lightgray) !important;
+        font-size: 0.98rem !important;
+        line-height: 1.45 !important;
+
+        // 1-й столбец (ТИП: INTJ+1)
+        &:nth-child(1) {
+          width: 110px !important;
+          font-size: 1.35rem !important;
+          font-weight: 700 !important;
+          color: #D12630 !important;
+          white-space: nowrap !important;
+        }
+
+        // 2-й столбец (ПОРТРЕТ)
+        &:nth-child(2) {
+          width: 160px !important;
+          text-align: center !important;
+
+          img {
+            max-width: 140px !important;
+            border-radius: 8px !important;
+            margin: 0 auto !important;
+            display: block !important;
+          }
+        }
+      }
+
+      // На телефоне перестраиваем таблицу в стопку, чтобы не сжимать текст
+      @media (max-width: 600px) {
+        display: block !important;
+        thead {
+          display: none !important;
+        }
+        tbody, tr, td {
+          display: block !important;
+          width: 100% !important;
+        }
+        td:nth-child(2) img {
+          max-width: 200px !important;
+        }
+      }
+    }
+
+    // Список антропометрии (в Obsidian с дефисами "-", на ПК — сеткой 2x2)
+    ul {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.45rem 1.5rem !important;
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr !important; // На телефоне — в 1 столбик
+      }
+
+      li {
+        font-size: 0.96rem !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        color: var(--darkgray) !important;
+
+        // Последний пункт (шрамы/приметы) растягиваем на обе колонки снизу
+        &:last-child {
+          grid-column: 1 / -1 !important;
+          margin-top: 0.25rem !important;
+          padding-top: 0.5rem !important;
+          border-top: 1px dashed var(--lightgray) !important;
+        }
+
+        strong {
+          color: var(--dark) !important;
+        }
+
+        code {
+          font-family: var(--bodyFont), sans-serif !important;
+          font-size: 0.92rem !important;
+          padding: 0.1rem 0.5rem !important;
+          border-radius: 5px !important;
+          background-color: rgba(255, 255, 255, 0.06) !important;
+          border: 1px solid var(--lightgray) !important;
+          color: var(--dark) !important;
+        }
+      }
+    }
+  }
+
+  // 2. Компактная лента ХРОНИКИ ( > [!chronicle] )
+  .callout[data-callout="chronicle"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 1rem 0 1.75rem 0 !important;
+
+    & > .callout-title {
+      display: none !important;
+    }
+
+    ul {
+      list-style: none !important;
+      padding-left: 1.25rem !important;
+      margin: 0 !important;
+      border-left: 2px solid var(--lightgray) !important;
+
+      li {
+        position: relative !important;
+        font-size: 0.98rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0.55rem !important;
+        padding-left: 0.25rem !important;
+
+        &::before {
+          content: "" !important;
+          position: absolute !important;
+          left: calc(-1.25rem - 5px) !important;
+          top: 0.48rem !important;
+          width: 8px !important;
+          height: 8px !important;
+          border-radius: 50% !important;
+          background-color: #D12630 !important;
+        }
+
+        code {
+          font-variant-numeric: tabular-nums !important;
+          font-size: 0.88rem !important;
+          font-weight: 600 !important;
+          padding: 0.1rem 0.45rem !important;
+          border-radius: 5px !important;
+          background-color: rgba(209, 38, 48, 0.12) !important;
+          color: var(--dark) !important;
+          margin-right: 0.35rem !important;
+        }
+      }
+    }
+  }
+}
