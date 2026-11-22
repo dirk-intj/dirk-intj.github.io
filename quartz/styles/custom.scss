@@ -583,6 +583,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   float: right !important;
   width: 220px !important; // Жёсткая фиксированная ширина карточки на ПК (можешь поменять на 260px или 300px)
   background: transparent !important;
+  box-sizing: border-box !important;
   border: none !important;
   padding: 0 !important;
   margin: 0.25rem 0 1.25rem 1.75rem !important;
@@ -794,5 +795,17 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     strong {
       color: var(--dark) !important;
     }
+  }
+}
+
+
+// Режим чтения («книжечка»): ужимаем ТОЛЬКО правый сайдбар, оставляя левый и центр на месте
+.page > #quartz-body:has(.sidebar.right.collapsed),
+.page > #quartz-body:has(.collapsed) {
+  grid-template-columns: 320px 1fr 40px !important; // Сжимаем правую колонку до узкой полоски (40px), чтобы её можно было вернуть наведением
+
+  // При наведении мыши на правую область — плавно возвращаем правый сайдбар
+  &:has(.sidebar.right:hover) {
+    grid-template-columns: 320px 1fr 320px !important;
   }
 }
