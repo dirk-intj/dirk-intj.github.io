@@ -588,126 +588,170 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 
 
-// 8. КАРТОЧКА ПЕРСОНАЖА / ЛИЧНОЕ ДЕЛО ( [!dossier] + [!chronicle] )
+// 8. ПРОФИЛЬ ПЕРСОНАЖА ( [!char-sheet] + [!chronicle] )
 
-// 1. Верхний паспорт-досье ( > [!dossier] )
-.callout[data-callout="dossier"] {
-  background-color: var(--light) !important;
-  border: 1px solid var(--lightgray) !important;
-  border-top: 3px solid #D12630 !important; // Фирменный красный верхний кант
-  border-radius: 10px !important;
-  padding: 1.1rem 1.35rem !important;
-  margin: 1.25rem 0 1.75rem 0 !important;
+// А. Модульная карточка-досье по вашей схеме ( > [!char-sheet] )
+.callout[data-callout="char-sheet"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.25rem 0 2rem 0 !important;
 
   & > .callout-title {
     display: none !important;
   }
 
-  // Таблица на 3 колонки: ТИП | ПОРТРЕТ | АРХЕТИП
-  table {
-    width: 100% !important;
-    margin: 0 0 1rem 0 !important;
-    border-collapse: collapse !important;
+  // Сетка 2 колонки: слева текст (1.7fr), справа паспорт (1fr)
+  & > .callout-content {
+    display: grid !important;
+    grid-template-columns: 1.7fr 1fr !important;
+    grid-template-areas:
+      "bio        photo"
+      "appearance photo"
+      "appearance mbti"
+      "appearance stats" !important;
+    gap: 1rem !important;
+    align-items: start !important;
 
-    th {
-      font-size: 0.85rem !important;
-      letter-spacing: 0.05em !important;
-      color: var(--darkgray) !important;
-      border-bottom: 1px solid var(--lightgray) !important;
-      padding: 0.4rem 0.65rem !important;
-    }
-
-    td {
-      padding: 0.65rem !important;
-      vertical-align: top !important;
-      border-bottom: 1px solid var(--lightgray) !important;
-      font-size: 0.98rem !important;
-      line-height: 1.45 !important;
-
-      // 1-й столбец (ТИП: INTJ+1)
-      &:nth-child(1) {
-        width: 110px !important;
-        font-size: 1.35rem !important;
-        font-weight: 700 !important;
-        color: #D12630 !important;
-        white-space: nowrap !important;
-      }
-
-      // 2-й столбец (ПОРТРЕТ)
-      &:nth-child(2) {
-        width: 160px !important;
-        text-align: center !important;
-
-        img {
-          max-width: 140px !important;
-          border-radius: 8px !important;
-          margin: 0 auto !important;
-          display: block !important;
-        }
-      }
-    }
-
-    // На телефоне перестраиваем таблицу в стопку
-    @media (max-width: 600px) {
-      display: block !important;
-      thead {
-        display: none !important;
-      }
-      tbody, tr, td {
-        display: block !important;
-        width: 100% !important;
-      }
-      td:nth-child(2) img {
-        max-width: 200px !important;
-      }
+    // На телефоне складываем в 1 логичную колонку
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr !important;
+      grid-template-areas:
+        "photo"
+        "mbti"
+        "stats"
+        "bio"
+        "appearance" !important;
     }
   }
 
-  // Список антропометрии (в Obsidian с дефисами "-", на ПК — сеткой 2x2)
-  ul {
-    list-style: none !important;
-    padding: 0 !important;
+  // Общий стиль для всех 5 внутренних блоков схемы
+  .callout {
+    background-color: var(--light) !important;
+    border: 1px solid var(--lightgray) !important;
+    border-radius: 10px !important;
+    padding: 1rem 1.2rem !important;
     margin: 0 !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.45rem 1.5rem !important;
+    height: 100% !important;
 
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr !important;
+    & > .callout-title {
+      display: none !important;
     }
+  }
 
-    li {
-      font-size: 0.96rem !important;
-      line-height: 1.5 !important;
+  // 1. Левый верхний блок: вводное описание (кто это)
+  .callout[data-callout="bio"] {
+    grid-area: bio !important;
+    border-left: 3px solid #D12630 !important;
+
+    p {
       margin: 0 !important;
-      color: var(--darkgray) !important;
+      font-size: 1.05rem !important;
+      line-height: 1.55 !important;
+      color: var(--dark) !important;
+    }
+  }
 
-      // Последний пункт (шрамы/приметы) растягиваем на обе колонки снизу
+  // 2. Левый нижний блок: архетип (внешность + шрамы)
+  .callout[data-callout="appearance"] {
+    grid-area: appearance !important;
+
+    p {
+      font-size: 0.98rem !important;
+      line-height: 1.5 !important;
+      color: var(--darkgray) !important;
+      margin-bottom: 0.75rem !important;
+
       &:last-child {
-        grid-column: 1 / -1 !important;
-        margin-top: 0.25rem !important;
-        padding-top: 0.5rem !important;
+        margin-bottom: 0 !important;
+        padding-top: 0.65rem !important;
         border-top: 1px dashed var(--lightgray) !important;
       }
 
       strong {
         color: var(--dark) !important;
       }
+    }
+  }
 
-      code {
-        font-family: var(--bodyFont), sans-serif !important;
-        font-size: 0.92rem !important;
-        padding: 0.1rem 0.5rem !important;
-        border-radius: 5px !important;
-        background-color: rgba(255, 255, 255, 0.06) !important;
-        border: 1px solid var(--lightgray) !important;
-        color: var(--dark) !important;
+  // 3. Правый верхний блок: фото персонажа (под строгий <img src="..." style="...">)
+  .callout[data-callout="photo"] {
+    grid-area: photo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.75rem !important;
+
+    img {
+      border-radius: 7px !important;
+      height: auto !important;
+    }
+  }
+
+  // 4. Правый средний блок: тип MBTI крупно
+  .callout[data-callout="mbti"] {
+    grid-area: mbti !important;
+    text-align: center !important;
+    padding: 0.75rem 1rem !important;
+    background-color: rgba(209, 38, 48, 0.08) !important;
+    border-color: rgba(209, 38, 48, 0.35) !important;
+
+    p {
+      margin: 0 !important;
+      font-size: 1.5rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      color: #D12630 !important;
+      line-height: 1.2 !important;
+    }
+  }
+
+  // 5. Правый нижний блок: статы (ДР, рост, вес)
+  .callout[data-callout="stats-box"] {
+    grid-area: stats !important;
+    padding: 0.85rem 1.1rem !important;
+
+    ul {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      li {
+        font-size: 0.94rem !important;
+        line-height: 1.45 !important;
+        padding: 0.35rem 0 !important;
+        margin: 0 !important;
+        border-bottom: 1px solid var(--lightgray) !important;
+        color: var(--darkgray) !important;
+
+        &:last-child {
+          border-bottom: none !important;
+          padding-bottom: 0 !important;
+        }
+        &:first-child {
+          padding-top: 0 !important;
+        }
+
+        strong {
+          color: var(--dark) !important;
+        }
+
+        code {
+          float: right !important;
+          font-family: var(--bodyFont), sans-serif !important;
+          font-size: 0.9rem !important;
+          padding: 0.05rem 0.45rem !important;
+          border-radius: 5px !important;
+          background-color: rgba(255, 255, 255, 0.06) !important;
+          border: 1px solid var(--lightgray) !important;
+          color: var(--dark) !important;
+        }
       }
     }
   }
 }
 
-// 2. Компактная лента ХРОНИКИ ( > [!chronicle] )
+// Б. Компактная лента ХРОНИКИ ( > [!chronicle] )
 .callout[data-callout="chronicle"] {
   background: transparent !important;
   border: none !important;
