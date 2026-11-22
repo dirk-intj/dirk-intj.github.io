@@ -605,7 +605,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     display: none !important;
   }
 
-  // Сетка 2 колонки по золотому сечению: слева текст (1.618fr), справа паспорт (1fr)
+  // Сетка 2 колонки по золотому сечению без растягивания пустот
   & > .callout-content {
     display: grid !important;
     grid-template-columns: 1.618fr 1fr !important;
@@ -614,8 +614,8 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       "bio        photo"
       "appearance photo"
       "appearance stats" !important;
-    gap: 1rem !important;
-    align-items: stretch !important;
+    gap: 0.85rem !important;
+    align-items: start !important;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr !important;
@@ -628,14 +628,14 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // Базовый стиль для блоков в рамках (appearance, mbti, photo, stats)
+  // Базовый стиль для блоков в рамках
   .callout {
     background-color: var(--light) !important;
     border: 1px solid var(--lightgray) !important;
     border-radius: 10px !important;
     padding: 1rem 1.2rem !important;
     margin: 0 !important;
-    height: 100% !important;
+    height: auto !important;
 
     & > .callout-title {
       display: none !important;
@@ -648,7 +648,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
-    padding: 0 !important; // Полностью убираем внутренние отступы
+    padding: 0 !important;
 
     p {
       margin: 0 0 0.85rem 0 !important;
@@ -667,12 +667,12 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // 2. Левый нижний блок: архетип (внешность + шрамы) — тоже под масштаб сайта
+  // 2. Левый нижний блок: архетип (внешность + шрамы)
   .callout[data-callout="appearance"] {
     grid-area: appearance !important;
 
     p {
-      font-size: 1.1rem !important; // Соразмерно основному тексту (~17.6px)
+      font-size: 1.1rem !important;
       line-height: 1.55 !important;
       color: var(--darkgray) !important;
       margin-bottom: 0.85rem !important;
@@ -694,28 +694,31 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // 3. Правый верхний блок: тип MBTI крупно и жирно, сама плашка компактная
+  // 3. Правый верхний блок: тип MBTI моноширинным шрифтом без двойной рамки
   .callout[data-callout="mbti"] {
     grid-area: mbti !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0.45rem 0.75rem !important;
+    padding: 0.55rem 0.75rem !important;
     background-color: rgba(209, 38, 48, 0.08) !important;
     border-color: rgba(209, 38, 48, 0.35) !important;
-    font-family: var(--codeFont), monospace !important;
 
-    p, strong {
+    p, strong, code {
       margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      font-family: var(--codeFont), monospace !important;
       font-size: 1.9rem !important;
-      font-weight: 900 !important;
-      letter-spacing: 0.05em !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
       color: #D12630 !important;
       line-height: 1 !important;
     }
   }
 
-  // 4. Правый средний блок: фото персонажа (портрет 3:4)
+  // 4. Правый средний блок: фото персонажа (плотно под портрет 2:3)
   .callout[data-callout="photo"] {
     grid-area: photo !important;
     padding: 0.5rem !important;
@@ -725,7 +728,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       width: 100% !important;
       max-width: 100% !important;
       height: auto !important;
-      aspect-ratio: 3 / 4 !important;
+      aspect-ratio: 2 / 3 !important;
       object-fit: cover !important;
       border-radius: 7px !important;
       margin: 0 !important;
@@ -733,7 +736,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // 5. Правый нижний блок: статы (Имя, Семья, ДР, рост, вес) — соразмерный шрифт
+  // 5. Правый нижний блок: статы (Имя, Семья, ДР, рост, вес)
   .callout[data-callout="stats-box"] {
     grid-area: stats !important;
     padding: 0.85rem 1.1rem !important;
@@ -744,7 +747,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       margin: 0 !important;
 
       li {
-        font-size: 1.05rem !important; // Крупно и читаемо (~16.8px)
+        font-size: 1.05rem !important;
         line-height: 1.5 !important;
         padding: 0.4rem 0 !important;
         margin: 0 !important;
@@ -782,7 +785,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 }
 
-// Б. Компактная лента ХРОНИКИ ( > [!chronicle] ) — тоже под твой размер шрифта
+// Б. Компактная лента ХРОНИКИ ( > [!chronicle] )
 .callout[data-callout="chronicle"] {
   background: transparent !important;
   border: none !important;
@@ -801,7 +804,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
     li {
       position: relative !important;
-      font-size: 1.125rem !important; // Соразмерно основному тексту (~18px)
+      font-size: 1.125rem !important;
       line-height: 1.55 !important;
       margin-bottom: 0.65rem !important;
       padding-left: 0.25rem !important;
@@ -834,3 +837,4 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 }
+
