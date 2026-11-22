@@ -738,13 +738,16 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
         // Убираем float: right — теперь капсулы аккуратно встают в ряд справа
                 // Обычные некликабельные значения (`Дирк`, `183 см`)
+                // Обычные значения (`Дирк`, `183 см`) и ссылки (`[[Террамайн]]`)
         code,
-        a {
+        a,
+        a.internal {
           float: none !important;
           display: inline-block !important;
-          margin-left: auto !important;
+          margin-left: auto !important; // Жёстко держим по правому краю и на ПК, и на мобилке
           font-family: var(--bodyFont), sans-serif !important;
           font-size: 0.95rem !important;
+          font-weight: 500 !important;
           padding: 0.05rem 0.5rem !important;
           border-radius: 5px !important;
           background-color: rgba(255, 255, 255, 0.06) !important;
@@ -754,25 +757,27 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           transition: all 0.2s ease !important;
         }
 
-        // Выделяем КЛИКАБЕЛЬНЫЕ ссылки (`[[Террамайн]]`) как интерактивные теги
-        a {
-          color: #D12630 !important; // Фирменный красный текст
-          border-color: rgba(209, 38, 48, 0.4) !important; // Тонкая красноватая рамка
-          background-color: rgba(209, 38, 48, 0.06) !important; // Едва заметный красный оттенок
+        // Выделяем КЛИКАБЕЛЬНЫЕ ссылки (`[[Террамайн]]`) как красные интерактивные теги везде
+        a,
+        a.internal {
+          color: #D12630 !important;
+          border: 1px solid rgba(209, 38, 48, 0.45) !important;
+          background-color: rgba(209, 38, 48, 0.08) !important;
 
-          // Аккуратная мини-стрелочка справа, подсказывающая, что сюда можно нажать
           &::after {
-            content: " ↗";
-            font-size: 0.8em;
-            opacity: 0.85;
+            content: " ↗" !important;
+            font-size: 0.8em !important;
+            opacity: 0.85 !important;
           }
 
-          &:hover {
-            background-color: #D12630 !important; // При наведении капсула заливается красным
+          &:hover,
+          &:active {
+            background-color: #D12630 !important;
             border-color: #D12630 !important;
-            color: #ffffff !important; // А текст становится белым
+            color: #ffffff !important;
           }
         }
+
 
       }
 
