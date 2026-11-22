@@ -197,187 +197,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 
 
 
-// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
-.callout[data-callout="grid"] {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 1.5rem 0 !important;
-  overflow: visible !important;
 
-  & > .callout-title {
-    display: none !important;
-  }
-
-  & > .callout-content {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-    overflow: visible !important;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr !important;
-    }
-  }
-}
-
-.callout[data-callout="card"] {
-  position: relative !important;
-  background-color: var(--light) !important;
-  border: 1px solid var(--lightgray) !important;
-  border-radius: 10px !important;
-  padding: 1rem 1.25rem !important;
-  margin: 0 0 1rem 0 !important;
-  transition: border-color 0.2s ease, transform 0.2s ease !important;
-
-  .callout[data-callout="grid"] & {
-    margin-bottom: 0 !important;
-  }
-
-  // Эффекты при наведении на ЛЮБОЕ место карточки
-  &:hover {
-    border-color: #D12630 !important;
-    transform: translateY(-2px);
-    cursor: pointer;
-
-    .callout-title a,
-    .callout-title a:hover {
-      color: #D12630 !important; // Жёстко фиксируем красный цвет при наведении
-    }
-  }
-
-  .callout-icon {
-    display: none !important;
-  }
-
-  // Верхняя строка: заголовок
-  .callout-title {
-    display: block !important;
-    font-size: 1.15rem !important;
-    font-weight: 600 !important;
-    color: var(--dark) !important;
-    margin-bottom: 0.35rem !important;
-
-    a {
-      text-decoration: none !important;
-      background-color: transparent !important;
-      padding: 0 !important;
-      color: var(--dark) !important;
-      transition: color 0.2s ease !important;
-
-      // Отключаем всплывающий предпросмотр ТОЛЬКО внутри карточек
-      .popover {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-
-      // Растягиваем кликабельную область ссылки на всю карточку
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-      }
-    }
-  }
-
-  // 5.1. ЦВЕТНЫЕ ТЕГИ ВНУТРИ КАРТОЧЕК ПЕРСОНАЖЕЙ ( 7 цветов на выбор )
-.callout[data-callout="card"] {
-  .callout-content {
-    margin: 0 !important;
-    padding: 0 !important;
-
-    p {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 0.4rem !important;
-      margin: 0.35rem 0 0 0 !important; // Убираем лишнюю пустоту снизу карточки
-      padding: 0 !important;
-      line-height: 1.4 !important;
-
-      // Базовый стиль любого `тега`
-      code {
-        font-family: var(--codeFont), monospace !important;
-        font-size: 0.85rem !important;
-        font-weight: 600 !important;
-        padding: 0.15rem 0.55rem !important;
-        border-radius: 6px !important;
-        background-color: rgba(255, 255, 255, 0.06) !important;
-        border: 1px solid var(--lightgray) !important;
-        color: var(--darkgray) !important;
-      }
-
-      // 1-й тег (MBTI) — всегда фирменный красный
-      code:first-of-type {
-        background-color: rgba(209, 38, 48, 0.12) !important;
-        border-color: rgba(209, 38, 48, 0.35) !important;
-        color: #D12630 !important;
-      }
-    }
-  }
-
-  // 1. Синий (империя, орден, закон): > [!card|blue]
-  &[data-callout-metadata="blue"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(59, 130, 246, 0.12) !important;
-    border-color: rgba(59, 130, 246, 0.35) !important;
-    color: #3b82f6 !important;
-  }
-
-  // 2. Золотой / Янтарный (аристократия, власть, столица): > [!card|gold]
-  &[data-callout-metadata="gold"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(234, 179, 8, 0.12) !important;
-    border-color: rgba(234, 179, 8, 0.35) !important;
-    color: #eab308 !important;
-  }
-
-  // 3. Изумрудный / Зелёный (провинция, природа, гильдии): > [!card|green]
-  &[data-callout-metadata="green"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(34, 197, 94, 0.12) !important;
-    border-color: rgba(34, 197, 94, 0.35) !important;
-    color: #22c55e !important;
-  }
-
-  // 4. Фиолетовый / Аметистовый (церковь, метафизика, инквизиция): > [!card|purple]
-  &[data-callout-metadata="purple"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(168, 85, 247, 0.12) !important;
-    border-color: rgba(168, 85, 247, 0.35) !important;
-    color: #a855f7 !important;
-  }
-
-  // 5. Бирюзовый / Стальной (наука, академия, инженеры): > [!card|cyan]
-  &[data-callout-metadata="cyan"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(6, 182, 212, 0.12) !important;
-    border-color: rgba(6, 182, 212, 0.35) !important;
-    color: #06b6d4 !important;
-  }
-
-  // 6. Медный / Оранжевый (индустрия, шахты, корпорация): > [!card|orange]
-  &[data-callout-metadata="orange"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(249, 115, 22, 0.12) !important;
-    border-color: rgba(249, 115, 22, 0.35) !important;
-    color: #f97316 !important;
-  }
-
-  // 7. Графитовый / Нейтральный (изгои, одиночки, без фракции): > [!card|gray]
-  &[data-callout-metadata="gray"] .callout-content p code:nth-of-type(2) {
-    background-color: rgba(148, 163, 184, 0.12) !important;
-    border-color: rgba(148, 163, 184, 0.35) !important;
-    color: #94a3b8 !important;
-  }
-}
-
-
-  // Нижняя часть: комментарий-описание
-  .callout-content p {
-    font-size: 0.98rem !important;
-    line-height: 1.45 !important;
-    color: var(--darkgray) !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-}
 
 
 
@@ -679,6 +499,83 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   display: none !important;
 }
 
+// 5.1. ЦВЕТНЫЕ ТЕГИ ВНУТРИ КАРТОЧЕК ПЕРСОНАЖЕЙ (вставить ПОСЛЕ 5-го блока на стр. 11!)
+.callout[data-callout="card"] {
+  .callout-content {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    p {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.4rem !important;
+      margin: 0.35rem 0 0 0 !important;
+      padding: 0 !important;
+      line-height: 1.4 !important;
+
+      code {
+        font-family: var(--codeFont), monospace !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        padding: 0.15rem 0.55rem !important;
+        border-radius: 6px !important;
+        background-color: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid var(--lightgray) !important;
+        color: var(--darkgray) !important;
+      }
+
+      // 1-й тег (MBTI) — фирменный красный
+      code:first-of-type {
+        background-color: rgba(209, 38, 48, 0.12) !important;
+        border-color: rgba(209, 38, 48, 0.35) !important;
+        color: #D12630 !important;
+      }
+    }
+  }
+
+  // 7 цветов для 2-го тега (ФРАКЦИИ): > [!card|blue], > [!card|gold] и т.д.
+  &[data-callout-metadata="blue"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(59, 130, 246, 0.12) !important;
+    border-color: rgba(59, 130, 246, 0.35) !important;
+    color: #3b82f6 !important;
+  }
+
+  &[data-callout-metadata="gold"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(234, 179, 8, 0.12) !important;
+    border-color: rgba(234, 179, 8, 0.35) !important;
+    color: #eab308 !important;
+  }
+
+  &[data-callout-metadata="green"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(34, 197, 94, 0.12) !important;
+    border-color: rgba(34, 197, 94, 0.35) !important;
+    color: #22c55e !important;
+  }
+
+  &[data-callout-metadata="purple"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(168, 85, 247, 0.12) !important;
+    border-color: rgba(168, 85, 247, 0.35) !important;
+    color: #a855f7 !important;
+  }
+
+  &[data-callout-metadata="cyan"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(6, 182, 212, 0.12) !important;
+    border-color: rgba(6, 182, 212, 0.35) !important;
+    color: #06b6d4 !important;
+  }
+
+  &[data-callout-metadata="orange"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(249, 115, 22, 0.12) !important;
+    border-color: rgba(249, 115, 22, 0.35) !important;
+    color: #f97316 !important;
+  }
+
+  &[data-callout-metadata="gray"] .callout-content code:nth-of-type(2) {
+    background-color: rgba(148, 163, 184, 0.12) !important;
+    border-color: rgba(148, 163, 184, 0.35) !important;
+    color: #94a3b8 !important;
+  }
+}
 
 
 // 8. ПРОФИЛЬ ПЕРСОНАЖА ( Карточка [!profile-card] справа с обтеканием текстом )
