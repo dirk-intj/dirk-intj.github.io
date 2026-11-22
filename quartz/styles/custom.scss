@@ -186,6 +186,31 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
+// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
+.callout[data-callout="grid"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
+  overflow: visible !important; // Чтобы верхняя рамка карточек не обрезалась при подъёме
+
+  & > .callout-title {
+    display: none !important;
+  }
+
+  // Нацеливаемся напрямую на .callout-content
+  & > .callout-content {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки в ряд на ПК
+    gap: 1rem !important;
+    overflow: visible !important;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important; // 1 колонка на телефоне
+    }
+  }
+}
+
 .callout[data-callout="card"] {
   background-color: var(--light) !important;
   border: 1px solid var(--lightgray) !important;
@@ -203,30 +228,36 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     transform: translateY(-2px);
   }
 
-  // Прячем системную иконку Quartz у карточек, чтобы не дублировала твой эмодзи
   .callout-icon {
     display: none !important;
   }
 
+  // Верхняя строка: заголовок
   .callout-title {
+    display: block !important;
     font-size: 1.15rem !important;
     font-weight: 600 !important;
     color: var(--dark) !important;
-    margin-bottom: 0.45rem !important;
+    margin-bottom: 0.5rem !important;
 
     a {
       text-decoration: none !important;
-      color: inherit !important;
+      background-color: transparent !important; // Убираем голубую подложку у ссылки
+      padding: 0 !important;
+      color: var(--dark) !important;
+
       &:hover {
         color: #D12630 !important;
       }
     }
   }
 
+  // Нижняя часть: комментарий-описание
   .callout-content p {
     font-size: 0.98rem !important;
     line-height: 1.45 !important;
     color: var(--darkgray) !important;
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
 }
