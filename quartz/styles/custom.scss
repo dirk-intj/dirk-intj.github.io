@@ -596,7 +596,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 .callout[data-callout="profile-card"] {
   float: right !important;
-  width: 240px !important; // Жёсткая фиксированная ширина карточки на ПК (можешь поменять на 260px или 300px)
+  width: 220px !important; // Жёсткая фиксированная ширина карточки на ПК (можешь поменять на 260px или 300px)
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
