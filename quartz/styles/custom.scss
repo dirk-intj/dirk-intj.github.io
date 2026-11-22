@@ -509,32 +509,34 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     p {
       display: flex !important;
       flex-wrap: wrap !important;
+      align-items: center !important;
       gap: 0.4rem !important;
-      margin: 0.35rem 0 0 0 !important;
+      margin: 0.4rem 0 0 0 !important;
       padding: 0 !important;
-      line-height: 1.4 !important;
+      line-height: 1.2 !important;
 
-      // Базовый стиль любого `тега` — 1 в 1 размер и пропорции родного облачка Quartz
+      // Базовый стиль любого `тега` — точный размер 1rem (16px) и отступы как в основном тексте
       code {
         font-family: var(--codeFont), monospace !important;
-        font-size: 0.85em !important;
+        font-size: 1rem !important; // Точные 16px, как у нижних облачков в тексте
         font-weight: 400 !important;
-        line-height: 1.2 !important;
-        padding: 0.12rem 0.35rem !important;
+        line-height: 1.25 !important;
+        padding: 0.1rem 0.3rem !important; // Компактные, плотные отступы 1 в 1 как снизу
         border-radius: 5px !important;
-        background-color: var(--lightgray) !important;
+        background-color: transparent !important;
         border: 1px solid var(--lightgray) !important;
-        color: var(--dark) !important;
+        color: var(--darkgray) !important;
       }
 
-      // 1-й тег (MBTI) — родной фон и текст, но с тонкой красной обводкой
+      // 1-й тег (MBTI) — прозрачный фон, обычный цвет текста и тонкая красная обводка
       code:first-of-type {
-        background-color: var(--lightgray) !important;
+        background-color: transparent !important;
         border-color: rgba(209, 38, 48, 0.6) !important;
         color: var(--dark) !important;
       }
     }
   }
+
 
   // 7 цветов для 2-го тега (ФРАКЦИИ): > [!card|blue], > [!card|gold] и т.д.
   &[data-callout-metadata="blue"] .callout-content p code:nth-of-type(2) {
