@@ -324,9 +324,9 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       background-color: var(--light) !important;
       border: 1px solid var(--lightgray) !important;
       border-radius: 10px !important;
-      padding: 0.9rem 1.25rem !important;
+      padding: 0.95rem 1.25rem !important;
       margin-bottom: 0.85rem !important;
-      font-size: 1rem !important; // Комфортный размер для текста комментария
+      font-size: 1rem !important; // 16px для текста комментария
       line-height: 1.48 !important;
       color: var(--darkgray) !important;
       transition: border-color 0.2s ease !important;
@@ -340,7 +340,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         content: "" !important;
         position: absolute !important;
         left: calc(-1.5rem - 6px) !important;
-        top: 1.35rem !important;
+        top: 1.4rem !important;
         width: 10px !important;
         height: 10px !important;
         border-radius: 50% !important;
@@ -348,37 +348,42 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         border: 2px solid var(--light) !important;
       }
 
-      // 1. Название арки — под основной размер шрифта сайта
+      // 1. Название арки — крупно, под масштаб сайта (~19.2px)
       strong {
         color: var(--dark) !important;
-        font-size: 1.175rem !important; // Твои 18.8px на ПК
+        font-size: 1.2rem !important;
         font-weight: 600 !important;
+        vertical-align: middle !important;
 
         @media (max-width: 600px) {
-          font-size: 1.0625rem !important; // Твои 17px на телефоне
+          font-size: 1.1rem !important;
         }
       }
 
-      // 2. Капсула СТАТУСА с эмодзи внутри (*✅ готово*)
+      // 2. Капсула СТАТУСА (*✅ готово*) — увеличена до ~16.8px
       & > em:first-of-type {
         font-style: normal !important;
-        font-size: 0.92rem !important;
+        font-size: 1.05rem !important;
         font-weight: 500 !important;
         padding: 0.2rem 0.65rem !important;
         border-radius: 6px !important;
         background-color: rgba(255, 255, 255, 0.06) !important;
         border: 1px solid var(--lightgray) !important;
         color: var(--dark) !important;
-        margin-left: 0.5rem !important;
+        margin-left: 0.55rem !important;
         vertical-align: middle !important;
+
+        @media (max-width: 600px) {
+          font-size: 0.95rem !important;
+        }
       }
 
-      // 3. Счётчик ОБЪЁМА (`287 стр. · 103к слов`) — тоже стал крупнее
+      // 3. Счётчик ОБЪЁМА (`287 стр. · 103к слов`) — увеличен до ~16.8px
       code {
         float: right !important;
         font-family: var(--bodyFont), sans-serif !important;
         font-variant-numeric: tabular-nums !important;
-        font-size: 0.92rem !important;
+        font-size: 1.05rem !important;
         padding: 0.2rem 0.65rem !important;
         border-radius: 6px !important;
         background-color: rgba(255, 255, 255, 0.04) !important;
@@ -388,7 +393,8 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         @media (max-width: 600px) {
           float: none !important;
           display: inline-block !important;
-          margin-top: 0.4rem !important;
+          font-size: 0.95rem !important;
+          margin-top: 0.45rem !important;
         }
       }
 
@@ -396,8 +402,9 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       br {
         display: block !important;
         content: "" !important;
-        margin-top: 0.45rem !important;
+        margin-top: 0.55rem !important;
       }
     }
   }
 }
+
