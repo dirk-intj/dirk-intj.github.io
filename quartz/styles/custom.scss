@@ -501,39 +501,26 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 // 5.1. ЦВЕТНЫЕ ТЕГИ ВНУТРИ КАРТОЧЕК ПЕРСОНАЖЕЙ (вставить ПОСЛЕ 5-го блока на стр. 11!)
 // 5.1. ЦВЕТНЫЕ ТЕГИ ВНУТРИ КАРТОЧЕК ПЕРСОНАЖЕЙ ( 7 цветов на выбор )
-.callout[data-callout="card"] {
-  .callout-content {
-    margin: 0 !important;
-    padding: 0 !important;
-
-    p {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 0.4rem !important;
-      margin: 0.35rem 0 0 0 !important;
-      padding: 0 !important;
-      line-height: 1.4 !important;
-
-      // Базовый стиль любого `тега` — обычное начертание без жирности
+      // Базовый стиль любого `тега` — 1 в 1 размер и пропорции родного облачка Quartz
       code {
         font-family: var(--codeFont), monospace !important;
-        font-size: 0.85rem !important;
-        font-weight: 400 !important; // Убрали жирность
-        padding: 0.15rem 0.55rem !important;
-        border-radius: 6px !important;
-        background-color: rgba(255, 255, 255, 0.06) !important;
+        font-size: 0.85em !important; // Относительно шрифта статьи (ровно как в обычном тексте!)
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+        padding: 0.12rem 0.35rem !important; // Компактные, плотные отступы как снизу
+        border-radius: 5px !important;
+        background-color: var(--lightgray) !important; // Родной серый фон облачка
         border: 1px solid var(--lightgray) !important;
-        color: var(--darkgray) !important;
-      }
-
-      // 1-й тег (MBTI) — только красная обводка, фон и текст спокойные
-      code:first-of-type {
-        background-color: rgba(255, 255, 255, 0.06) !important;
-        border-color: rgba(209, 38, 48, 0.55) !important;
         color: var(--dark) !important;
       }
-    }
-  }
+
+      // 1-й тег (MBTI) — родной фон и текст, но с тонкой красной обводкой
+      code:first-of-type {
+        background-color: var(--lightgray) !important;
+        border-color: rgba(209, 38, 48, 0.6) !important;
+        color: var(--dark) !important;
+      }
+
 
 
   // 7 цветов для 2-го тега (ФРАКЦИИ): > [!card|blue], > [!card|gold] и т.д.
