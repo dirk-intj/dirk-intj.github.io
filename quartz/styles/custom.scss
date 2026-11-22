@@ -594,9 +594,10 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 // 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
 
-// Делим тело статьи (.popover-hint внутри article) на 2 жёсткие колонки
-.center article:has(.callout[data-callout="profile-card"]),
-.center article .popover-hint:has(.callout[data-callout="profile-card"]) {
+// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
+
+// Делим внутренний контейнер статьи (.markdown-preview-view) на 2 жёсткие колонки
+.center article .markdown-preview-view:has(> .callout[data-callout="profile-card"]) {
   display: grid !important;
   grid-template-columns: 1.618fr 1fr !important; // Золотое сечение (61.8% текст / 38.2% карточка)
   column-gap: 1.75rem !important;
@@ -608,7 +609,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 
   // Весь обычный контент (абзацы, заголовки, списки, блок внешности) идёт строго в 1-ю колонку
-  & > *:not(.callout[data-callout="profile-card"]):not(.popover-hint) {
+  & > *:not(.callout[data-callout="profile-card"]) {
     grid-column: 1 !important;
   }
 
@@ -623,6 +624,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 }
+
 
 
 // Стили самой правой панели ( > [!profile-card] )
