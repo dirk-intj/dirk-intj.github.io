@@ -194,8 +194,32 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
+// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
+.callout[data-callout="grid"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
+  overflow: visible !important;
+
+  & > .callout-title {
+    display: none !important;
+  }
+
+  & > .callout-content {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    overflow: visible !important;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}
+
 .callout[data-callout="card"] {
-  position: relative !important; // Точка отсчёта для растянутой ссылки
+  position: relative !important;
   background-color: var(--light) !important;
   border: 1px solid var(--lightgray) !important;
   border-radius: 10px !important;
@@ -209,12 +233,13 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 
   // Эффекты при наведении на ЛЮБОЕ место карточки
   &:hover {
-    border-color: #D12630 !important; // Красная рамка
-    transform: translateY(-2px);       // Лёгкий подъём
-    cursor: pointer;                   // Курсор «рука»
+    border-color: #D12630 !important;
+    transform: translateY(-2px);
+    cursor: pointer;
 
-    .callout-title a {
-      color: #D12630 !important;       // Заголовок сразу красится в красный
+    .callout-title a,
+    .callout-title a:hover {
+      color: #D12630 !important; // Жёстко фиксируем красный цвет при наведении
     }
   }
 
@@ -237,6 +262,14 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
       color: var(--dark) !important;
       transition: color 0.2s ease !important;
 
+      // Отключаем всплывающий предпросмотр ТОЛЬКО внутри карточек
+      .popover {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
       // Растягиваем кликабельную область ссылки на всю карточку
       &::after {
         content: "";
@@ -256,4 +289,5 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     margin-bottom: 0 !important;
   }
 }
+
 
