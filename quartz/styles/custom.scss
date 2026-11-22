@@ -694,7 +694,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // 3. Нижняя плашка: статы (Имя, Фамилия, ДР, рост, вес)
+    // 3. Нижняя плашка: статы (Имя, Фамилия, ДР, рост, вес)
   .callout[data-callout="stats-box"] {
     padding: 0.85rem 1.1rem !important;
 
@@ -727,7 +727,9 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           color: var(--dark) !important;
         }
 
-        code {
+        // Капсулы справа: и для текста в `кавычках`, и для кликабельных [[ссылок]]
+        code,
+        a {
           float: right !important;
           font-family: var(--bodyFont), sans-serif !important;
           font-size: 1rem !important;
@@ -736,10 +738,19 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           background-color: rgba(255, 255, 255, 0.06) !important;
           border: 1px solid var(--lightgray) !important;
           color: var(--dark) !important;
+          text-decoration: none !important;
+          transition: border-color 0.2s ease, color 0.2s ease !important;
+        }
+
+        // Подсветка кликабельной фамилии/ссылки красным при наведении
+        a:hover {
+          border-color: #D12630 !important;
+          color: #D12630 !important;
         }
       }
     }
   }
+
 }
 
 // Стиль для блока внешности ( > [!appearance] ), который аккуратно упирается в правую карточку
