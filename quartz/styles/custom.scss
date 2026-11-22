@@ -592,28 +592,43 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 
 
-// 8. ПРОФИЛЬ ПЕРСОНАЖА ( [!char-sheet] + [!chronicle] )
+// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
 
+// Делим тело статьи на 2 жёсткие колонки ТОЛЬКО на страницах с карточкой персонажа
+.center article:has(.callout[data-callout="profile-card"]) {
+  display: grid !important;
+  grid-template-columns: 1.618fr 1fr !important; // Золотое сечение (61.8% текст / 38.2% карточка)
+  column-gap: 1.75rem !important;
+  align-items: start !important;
 
+  // На мобильном экране перестраиваем в 1 аккуратный столбец
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr !important;
+  }
 
-// А. Правая боковая панель досье ( > [!sidebar] )
-.callout[data-callout="sidebar"] {
-  float: right !important;
-  width: 38.2% !important; // Точное золотое сечение от ширины статьи (38.2% / 61.8%)
-  min-width: 260px !important;
-  max-width: 340px !important;
+  // Весь обычный контент (абзацы, заголовки, списки, блок внешности) идёт строго в 1-ю колонку
+  & > *:not(.callout[data-callout="profile-card"]) {
+    grid-column: 1 !important;
+  }
+
+  // Сама правая карточка из 3 блоков встаёт строго во 2-ю колонку на всю высоту (не плавает!)
+  & > .callout[data-callout="profile-card"] {
+    grid-column: 2 !important;
+    grid-row: 1 / span 50 !important; // Занимает правый столбец сверху донизу, текст под неё не затекает
+
+    @media (max-width: 768px) {
+      grid-column: 1 !important;
+      grid-row: auto !important; // На телефоне встаёт первой сверху над текстом
+    }
+  }
+}
+
+// Стили самой правой панели ( > [!profile-card] )
+.callout[data-callout="profile-card"] {
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
-  margin: 0.25rem 0 1.5rem 1.75rem !important; // Отступ слева, чтобы текст не прилипал
-
-  // На мобильных и узких экранах отключаем обтекание и ставим панель по центру над текстом
-  @media (max-width: 768px) {
-    float: none !important;
-    width: 100% !important;
-    max-width: 400px !important;
-    margin: 1rem auto 1.75rem auto !important;
-  }
+  margin: 0.25rem 0 1.5rem 0 !important;
 
   & > .callout-title {
     display: none !important;
@@ -622,10 +637,10 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   & > .callout-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.85rem !important; // Ровный зазор между MBTI, фото и статами без всяких дыр
+    gap: 0.85rem !important; // Ровный зазор между тремя плашками без дыр
   }
 
-  // Базовый стиль для трёх плашек внутри правой панели
+  // Общий стиль для 3 плашек внутри правой панели
   .callout {
     background-color: var(--light) !important;
     border: 1px solid var(--lightgray) !important;
@@ -638,7 +653,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
-  // 1. Верхняя плашка: тип MBTI моноширинным шрифтом без двойной рамки
+  // 1. Верхняя плашка: MBTI
   .callout[data-callout="mbti"] {
     display: flex !important;
     align-items: center !important;
@@ -695,6 +710,10 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         border-bottom: 1px solid var(--lightgray) !important;
         color: var(--darkgray) !important;
 
+        @media (max-width: 600px) {
+          font-size: 1rem !important;
+        }
+
         &:last-child {
           border-bottom: none !important;
           padding-bottom: 0 !important;
@@ -722,14 +741,13 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 }
 
-// Отдельный блок внешности и примет ( > [!appearance] ), который можно ставить прямо в тексте слева
+// Стиль для блока внешности ( > [!appearance] ), который пишется в обычном потоке слева
 .callout[data-callout="appearance"] {
   background-color: var(--light) !important;
   border: 1px solid var(--lightgray) !important;
   border-radius: 10px !important;
   padding: 1rem 1.2rem !important;
-  margin: 1rem 0 1.5rem 0 !important;
-  overflow: hidden !important; // Чтобы рамка не заезжала под правую панель при обтекании
+  margin: 0.75rem 0 1.5rem 0 !important;
 
   & > .callout-title {
     display: none !important;
@@ -740,6 +758,11 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     line-height: 1.55 !important;
     color: var(--darkgray) !important;
     margin-bottom: 0.85rem !important;
+
+    @media (max-width: 600px) {
+      font-size: 1.02rem !important;
+      line-height: 1.48 !important;
+    }
 
     &:last-child {
       margin-bottom: 0 !important;
@@ -752,7 +775,3 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 }
-
-
-
-
