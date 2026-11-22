@@ -594,8 +594,9 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 // 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
 
-// Делим тело статьи на 2 жёсткие колонки ТОЛЬКО на страницах с карточкой персонажа
-.center article:has(.callout[data-callout="profile-card"]) {
+// Делим тело статьи (.popover-hint внутри article) на 2 жёсткие колонки
+.center article:has(.callout[data-callout="profile-card"]),
+.center article .popover-hint:has(.callout[data-callout="profile-card"]) {
   display: grid !important;
   grid-template-columns: 1.618fr 1fr !important; // Золотое сечение (61.8% текст / 38.2% карточка)
   column-gap: 1.75rem !important;
@@ -607,21 +608,22 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 
   // Весь обычный контент (абзацы, заголовки, списки, блок внешности) идёт строго в 1-ю колонку
-  & > *:not(.callout[data-callout="profile-card"]) {
+  & > *:not(.callout[data-callout="profile-card"]):not(.popover-hint) {
     grid-column: 1 !important;
   }
 
-  // Сама правая карточка из 3 блоков встаёт строго во 2-ю колонку на всю высоту (не плавает!)
+  // Сама правая карточка из 3 блоков встаёт строго во 2-ю колонку (не плавает!)
   & > .callout[data-callout="profile-card"] {
     grid-column: 2 !important;
-    grid-row: 1 / span 50 !important; // Занимает правый столбец сверху донизу, текст под неё не затекает
+    grid-row: 1 / span 50 !important;
 
     @media (max-width: 768px) {
       grid-column: 1 !important;
-      grid-row: auto !important; // На телефоне встаёт первой сверху над текстом
+      grid-row: auto !important;
     }
   }
 }
+
 
 // Стили самой правой панели ( > [!profile-card] )
 .callout[data-callout="profile-card"] {
