@@ -592,47 +592,25 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 
 
-// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
+// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Карточка [!profile-card] справа с обтеканием текстом )
 
-// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая колонка [!profile-card] + обычный текст без ">" слева )
-
-// Делим внутренний контейнер статьи (.markdown-preview-view) на 2 жёсткие колонки
-.center article .markdown-preview-view:has(> .callout[data-callout="profile-card"]) {
-  display: grid !important;
-  grid-template-columns: 1.618fr 1fr !important; // Золотое сечение (61.8% текст / 38.2% карточка)
-  column-gap: 1.75rem !important;
-  align-items: start !important;
-
-  // На мобильном экране перестраиваем в 1 аккуратный столбец
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr !important;
-  }
-
-  // Весь обычный контент (абзацы, заголовки, списки, блок внешности) идёт строго в 1-ю колонку
-  & > *:not(.callout[data-callout="profile-card"]) {
-    grid-column: 1 !important;
-  }
-
-  // Сама правая карточка из 3 блоков встаёт строго во 2-ю колонку (не плавает!)
-  & > .callout[data-callout="profile-card"] {
-    grid-column: 2 !important;
-    grid-row: 1 / span 50 !important;
-
-    @media (max-width: 768px) {
-      grid-column: 1 !important;
-      grid-row: auto !important;
-    }
-  }
-}
-
-
-
-// Стили самой правой панели ( > [!profile-card] )
 .callout[data-callout="profile-card"] {
+  float: right !important;
+  width: 38.2% !important; // Точное золотое сечение
+  min-width: 250px !important;
+  max-width: 320px !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
-  margin: 0.25rem 0 1.5rem 0 !important;
+  margin: 0.25rem 0 1.25rem 1.75rem !important; // Отступ слева от текста и снизу
+
+  // На телефоне отключаем обтекание и ставим карточку по центру над текстом
+  @media (max-width: 768px) {
+    float: none !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    margin: 1rem auto 1.5rem auto !important;
+  }
 
   & > .callout-title {
     display: none !important;
@@ -641,10 +619,10 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   & > .callout-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.85rem !important; // Ровный зазор между тремя плашками без дыр
+    gap: 0.85rem !important;
   }
 
-  // Общий стиль для 3 плашек внутри правой панели
+  // Базовый стиль для 3 плашек внутри правой карточки
   .callout {
     background-color: var(--light) !important;
     border: 1px solid var(--lightgray) !important;
@@ -745,13 +723,14 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 }
 
-// Стиль для блока внешности ( > [!appearance] ), который пишется в обычном потоке слева
+// Стиль для блока внешности ( > [!appearance] ), который аккуратно упирается в правую карточку
 .callout[data-callout="appearance"] {
   background-color: var(--light) !important;
   border: 1px solid var(--lightgray) !important;
   border-radius: 10px !important;
   padding: 1rem 1.2rem !important;
   margin: 0.75rem 0 1.5rem 0 !important;
+  overflow: hidden !important; // Чтобы рамка не заезжала под правую карточку при обтекании
 
   & > .callout-title {
     display: none !important;
