@@ -193,6 +193,17 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
  
+// Сжимаем пустое место под «Обратными ссылками» при сворачивании списка
+.backlinks {
+  &:has(.collapsed),
+  &:has([aria-expanded="false"]),
+  &.collapsed {
+    ul,
+    .overflow {
+      display: none !important;
+    }
+  }
+}
 
 
 
