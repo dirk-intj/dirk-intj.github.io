@@ -396,6 +396,57 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
+// 7. СВОДКА ОБЪЁМА РУКОПИСИ ( [!stats] )
+.callout[data-callout="stats"] {
+  background-color: var(--light) !important;
+  border: 1px solid var(--lightgray) !important;
+  border-left: 3px solid #D12630 !important; // Строгий красный акцент слева
+  border-radius: 10px !important;
+  padding: 0.9rem 1.25rem !important;
+  margin: 1rem 0 1.25rem 0 !important;
+
+  & > .callout-title {
+    display: none !important;
+  }
+
+  & > .callout-content ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+    text-align: center !important;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important;
+      text-align: left !important;
+      gap: 0.5rem !important;
+    }
+
+    li {
+      margin: 0 !important;
+      font-size: 0.95rem !important;
+      color: var(--darkgray) !important;
+
+      strong {
+        display: block !important;
+        font-size: 1.45rem !important;
+        font-weight: 700 !important;
+        color: var(--dark) !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.15rem !important;
+
+        @media (max-width: 600px) {
+          display: inline !important;
+          font-size: 1.15rem !important;
+          margin-right: 0.4rem !important;
+        }
+      }
+    }
+  }
+}
+
 
 
 // 1. Прячем ТОЛЬКО всплывающее окошко, не трогая тело статьи (.popover-hint)
