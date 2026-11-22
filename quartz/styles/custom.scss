@@ -1,16 +1,11 @@
 @use "./variables.scss" as *;
 
-// Выравниваем верхнюю линию всех трёх колонок (левой, центральной и правой)
+// Возвращаем боковым панелям родной отступ, а центральную колонку поднимаем наполовину
 .page > #quartz-body {
-  .sidebar {
-    padding-top: 2rem !important;
-  }
-
   .center {
-    margin-top: 2rem !important;
+    margin-top: 3rem !important; // Было 6rem, стало ровно в два раза меньше
     padding-top: 0 !important;
 
-    // Убираем встроенный отступ шапки центральной колонки, который толкал хлебные крошки вниз
     & > header,
     .page-header {
       margin-top: 0 !important;
@@ -19,9 +14,7 @@
   }
 
   @media (max-width: 800px) {
-    .sidebar,
     .center {
-      padding-top: 1rem !important;
       margin-top: 1rem !important;
     }
   }
