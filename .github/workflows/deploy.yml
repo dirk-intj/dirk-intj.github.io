@@ -27,9 +27,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx quartz build
-      - name: Add legal disclaimer to HTML footer
+            - name: Add legal disclaimer to HTML footer
         run: |
-          find public -name "*.html" -type f -exec sed -i 's#<div class="page-footer"></div>#<div class="page-footer"><div class="legal-disclaimer" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px dashed var(--lightgray); text-align: center;"><p style="font-size: 0.8rem; color: var(--gray); line-height: 1.45; margin: 0 0 0.4rem 0;"><b>Возрастная категория: 18+</b><br>Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора.</p><p style="font-size: 0.95rem; color: var(--darkgray); margin: 0;">© Hiddenheið | Dirk.Intj | 2026. <br>Все права защищены.</p></div></div>#g' {} +
+          find public -name "*.html" -type f -exec sed -i 's#<div class="right sidebar"></div>#<div class="right sidebar"></div><div class="legal-disclaimer" style="grid-column: 1 / -1; width: 100%; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px dashed var(--lightgray); text-align: center;"><p style="font-size: 0.8rem; color: var(--gray); line-height: 1.45; margin: 0 0 0.4rem 0;"><b>Возрастная категория: 18+</b><br>Все материалы данного ресурса являются некоммерческим литературным творчеством и художественным вымыслом автора.</p><p style="font-size: 0.95rem; color: var(--darkgray); margin: 0;">© Hiddenheið | Dirk.Intj | 2026. <br>Все права защищены.</p></div>#g' {} +
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
