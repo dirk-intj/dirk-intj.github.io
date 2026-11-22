@@ -169,6 +169,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 }
  
 
+
 // 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
 .callout[data-callout="grid"] {
   background: transparent !important;
@@ -194,6 +195,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 }
 
 .callout[data-callout="card"] {
+  position: relative !important; // Точка отсчёта для растянутой ссылки
   background-color: var(--light) !important;
   border: 1px solid var(--lightgray) !important;
   border-radius: 10px !important;
@@ -205,9 +207,15 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     margin-bottom: 0 !important;
   }
 
+  // Эффекты при наведении на ЛЮБОЕ место карточки
   &:hover {
-    border-color: #D12630 !important; // Твой фирменный красный при наведении
-    transform: translateY(-2px);
+    border-color: #D12630 !important; // Красная рамка
+    transform: translateY(-2px);       // Лёгкий подъём
+    cursor: pointer;                   // Курсор «рука»
+
+    .callout-title a {
+      color: #D12630 !important;       // Заголовок сразу красится в красный
+    }
   }
 
   .callout-icon {
@@ -220,16 +228,21 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     font-size: 1.15rem !important;
     font-weight: 600 !important;
     color: var(--dark) !important;
-    margin-bottom: 0.35rem !important; // Компактный отступ до описания
+    margin-bottom: 0.35rem !important;
 
     a {
       text-decoration: none !important;
       background-color: transparent !important;
       padding: 0 !important;
       color: var(--dark) !important;
+      transition: color 0.2s ease !important;
 
-      &:hover {
-        color: #D12630 !important;
+      // Растягиваем кликабельную область ссылки на всю карточку
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
       }
     }
   }
@@ -243,3 +256,4 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     margin-bottom: 0 !important;
   }
 }
+
