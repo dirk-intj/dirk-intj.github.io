@@ -1,5 +1,28 @@
 @use "./variables.scss" as *;
 
+// Уменьшаем огромный пустой отступ в самом верху страницы на ПК
+.page > #quartz-body {
+  .sidebar {
+    padding-top: 2.5rem !important; // Было 6rem (~96px), станет ~40px
+  }
+
+  .center {
+    margin-top: 2.5rem !important;
+    padding-top: 0 !important;
+  }
+
+  // На мобильных устройствах (где появляется верхняя полоса меню) оставляем компактный отступ
+  @media (max-width: 800px) {
+    .sidebar {
+      padding-top: 1rem !important;
+    }
+    .center {
+      margin-top: 1rem !important;
+    }
+  }
+}
+
+
 // Полная ликвидация внутреннего скроллбара папок Кварца
 #explorer-content {
   max-height: none !important;
