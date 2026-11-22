@@ -142,5 +142,91 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 }
  
 
+// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
+.callout[data-callout="grid"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
 
+  & > .callout-title {
+    display: none !important;
+  }
 
+  & > .callout-content > .callout-content-inner {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки на ПК
+    gap: 1rem !important;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important; // 1 колонка на телефоне
+    }
+  }
+}
+
+// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ПОД ЭМОДЗИ ( [!grid] + [!card] )
+.callout[data-callout="grid"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
+
+  & > .callout-title {
+    display: none !important;
+  }
+
+  & > .callout-content > .callout-content-inner {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки на ПК
+    gap: 1rem !important;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important; // 1 колонка на телефоне
+    }
+  }
+}
+
+.callout[data-callout="card"] {
+  background-color: var(--light) !important;
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 10px !important;
+  padding: 1rem 1.25rem !important;
+  margin: 0 0 1rem 0 !important;
+  transition: border-color 0.2s ease, transform 0.2s ease !important;
+
+  .callout[data-callout="grid"] & {
+    margin-bottom: 0 !important;
+  }
+
+  &:hover {
+    border-color: #D12630 !important; // Твой фирменный красный при наведении
+    transform: translateY(-2px);
+  }
+
+  // Прячем системную иконку Quartz у карточек, чтобы не дублировала твой эмодзи
+  .callout-icon {
+    display: none !important;
+  }
+
+  .callout-title {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    color: var(--dark) !important;
+    margin-bottom: 0.45rem !important;
+
+    a {
+      text-decoration: none !important;
+      color: inherit !important;
+      &:hover {
+        color: #D12630 !important;
+      }
+    }
+  }
+
+  .callout-content p {
+    font-size: 0.98rem !important;
+    line-height: 1.45 !important;
+    color: var(--darkgray) !important;
+    margin-bottom: 0 !important;
+  }
+}
