@@ -75,22 +75,42 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
+// Настройка плотной шапки для ВСЕХ плашек на сайте (обычных и карточек)
 .callout {
-  // Заставляем заголовок плашки быть плотным и аккуратным
   .callout-title {
-    line-height: 1 !important; // Минимальный интервал для шапки плашки
-   padding-bottom: 0 !important; // Зажимаем внутренний отступ снизу
+    line-height: 1.2 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0.35rem !important; // Вот это главное расстояние между заголовком и текстом (меняй под свой вкус)
+
+    // Убиваем скрытые отступы у внутренних тегов заголовка, которые создают дыру
+    .callout-title-inner,
+    .callout-title-inner p,
+    p {
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: inherit !important;
+    }
   }
 
-  // ХИТРЫЙ ХОД: Находим самый первый абзац текста СРАЗУ под заголовком плашки
- .callout-content-inner {
-    margin-top: 0px !important;      // Полностью обнуляем верхний внешний отступ
- //   //line-height: 1.5 !important;   // Делаем межстрочный интервал текста внутри плашки чуть плотнее
+  .callout-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+
+    // Убираем верхний отступ у самого первого абзаца текста внутри плашки
+    & > p:first-child,
+    .callout-content-inner > p:first-child {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
   }
+
   .callout-icon {
- padding: .4rem 0 !important;
+    padding: 0 !important;
+    margin-right: 0.4rem !important;
   }
 }
+
 
 .toc {
   // Сам заголовок оглавления (слово "On this page" или "Оглавление")
@@ -148,57 +168,12 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   border: none !important;
   padding: 0 !important;
   margin: 1.5rem 0 !important;
-
-  & > .callout-title {
-    display: none !important;
-  }
-
-  & > .callout-content > .callout-content-inner {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки на ПК
-    gap: 1rem !important;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr !important; // 1 колонка на телефоне
-    }
-  }
-}
-
-// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ПОД ЭМОДЗИ ( [!grid] + [!card] )
-.callout[data-callout="grid"] {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 1.5rem 0 !important;
-
-  & > .callout-title {
-    display: none !important;
-  }
-
-  & > .callout-content > .callout-content-inner {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки на ПК
-    gap: 1rem !important;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr !important; // 1 колонка на телефоне
-    }
-  }
-}
-
-// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
-.callout[data-callout="grid"] {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 1.5rem 0 !important;
   overflow: visible !important; // Чтобы верхняя рамка карточек не обрезалась при подъёме
 
   & > .callout-title {
     display: none !important;
   }
 
-  // Нацеливаемся напрямую на .callout-content
   & > .callout-content {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important; // 2 колонки в ряд на ПК
@@ -238,11 +213,11 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     font-size: 1.15rem !important;
     font-weight: 600 !important;
     color: var(--dark) !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.35rem !important; // Компактный отступ до описания
 
     a {
       text-decoration: none !important;
-      background-color: transparent !important; // Убираем голубую подложку у ссылки
+      background-color: transparent !important;
       padding: 0 !important;
       color: var(--dark) !important;
 
