@@ -290,13 +290,9 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
 
-// 1. Полностью запрещаем появление окна предпросмотра при наведении на карточку
-body:has(.callout[data-callout="card"]:hover) .popover,
-body:has(.callout[data-callout="card"]:hover) [class*="popover"] {
+// 1. Прячем ТОЛЬКО всплывающее окошко, не трогая тело статьи (.popover-hint)
+body:has(.callout[data-callout="card"]:hover) > .popover {
   display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
 }
 
 // 2. Жёстко удерживаем красный цвет заголовка при наведении на любую точку карточки
@@ -304,5 +300,6 @@ body:has(.callout[data-callout="card"]:hover) [class*="popover"] {
 .callout[data-callout="card"]:hover .callout-title a.internal {
   color: #D12630 !important;
 }
+
 
 
