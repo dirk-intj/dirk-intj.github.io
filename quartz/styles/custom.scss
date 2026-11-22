@@ -594,7 +594,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 // 8. ПРОФИЛЬ ПЕРСОНАЖА ( [!char-sheet] + [!chronicle] )
 
-// 8. ПРОФИЛЬ ПЕРСОНАЖА ( Правая панель [!sidebar] + обычный текст слева )
+
 
 // А. Правая боковая панель досье ( > [!sidebar] )
 .callout[data-callout="sidebar"] {
@@ -754,56 +754,5 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 }
 
 
-// Б. Компактная лента ХРОНИКИ ( > [!chronicle] )
-.callout[data-callout="chronicle"] {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 1rem 0 1.75rem 0 !important;
 
-  & > .callout-title {
-    display: none !important;
-  }
-
-  ul {
-    list-style: none !important;
-    padding-left: 1.35rem !important;
-    margin: 0 !important;
-    border-left: 2px solid var(--lightgray) !important;
-
-    li {
-      position: relative !important;
-      font-size: 1.125rem !important;
-      line-height: 1.55 !important;
-      margin-bottom: 0.65rem !important;
-      padding-left: 0.25rem !important;
-
-      @media (max-width: 600px) {
-        font-size: 1.05rem !important;
-      }
-
-      &::before {
-        content: "" !important;
-        position: absolute !important;
-        left: calc(-1.35rem - 5px) !important;
-        top: 0.58rem !important;
-        width: 8px !important;
-        height: 8px !important;
-        border-radius: 50% !important;
-        background-color: #D12630 !important;
-      }
-
-      code {
-        font-variant-numeric: tabular-nums !important;
-        font-size: 0.98rem !important;
-        font-weight: 600 !important;
-        padding: 0.1rem 0.5rem !important;
-        border-radius: 5px !important;
-        background-color: rgba(209, 38, 48, 0.12) !important;
-        color: var(--dark) !important;
-        margin-right: 0.4rem !important;
-      }
-    }
-  }
-}
 
