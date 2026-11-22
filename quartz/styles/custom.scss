@@ -77,13 +77,15 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
 
 // Настройка плотной шапки для ВСЕХ плашек на сайте (обычных и карточек)
 .callout {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+
   .callout-title {
     line-height: 1.2 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    margin-bottom: 0.35rem !important; // Вот это главное расстояние между заголовком и текстом (меняй под свой вкус)
+    margin-bottom: 0.35rem !important;
 
-    // Убиваем скрытые отступы у внутренних тегов заголовка, которые создают дыру
     .callout-title-inner,
     .callout-title-inner p,
     p {
@@ -97,19 +99,24 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
     margin-top: 0 !important;
     padding-top: 0 !important;
 
-    // Убираем верхний отступ у самого первого абзаца текста внутри плашки
     & > p:first-child,
     .callout-content-inner > p:first-child {
       margin-top: 0 !important;
       padding-top: 0 !important;
     }
+
+    & > p:last-child,
+    .callout-content-inner > p:last-child {
+      margin-bottom: 0 !important;
+    }
   }
 
   .callout-icon {
     padding: 0 !important;
-    margin-right: 0.4rem !important;
+    margin-right: 0.45rem !important;
   }
 }
+
 
 
 .toc {
