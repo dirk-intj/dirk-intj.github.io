@@ -501,15 +501,28 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 
 
 // 5.1. ЦВЕТНЫЕ ТЕГИ ВНУТРИ КАРТОЧЕК ПЕРСОНАЖЕЙ ( 7 цветов на выбор )
+.callout[data-callout="card"] {
+  .callout-content {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    p {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.4rem !important;
+      margin: 0.35rem 0 0 0 !important;
+      padding: 0 !important;
+      line-height: 1.4 !important;
+
       // Базовый стиль любого `тега` — 1 в 1 размер и пропорции родного облачка Quartz
       code {
         font-family: var(--codeFont), monospace !important;
-        font-size: 0.85em !important; // Относительно шрифта статьи (ровно как в обычном тексте!)
+        font-size: 0.85em !important;
         font-weight: 400 !important;
         line-height: 1.2 !important;
-        padding: 0.12rem 0.35rem !important; // Компактные, плотные отступы как снизу
+        padding: 0.12rem 0.35rem !important;
         border-radius: 5px !important;
-        background-color: var(--lightgray) !important; // Родной серый фон облачка
+        background-color: var(--lightgray) !important;
         border: 1px solid var(--lightgray) !important;
         color: var(--dark) !important;
       }
@@ -520,52 +533,53 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         border-color: rgba(209, 38, 48, 0.6) !important;
         color: var(--dark) !important;
       }
-
-
+    }
+  }
 
   // 7 цветов для 2-го тега (ФРАКЦИИ): > [!card|blue], > [!card|gold] и т.д.
-  &[data-callout-metadata="blue"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="blue"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(59, 130, 246, 0.12) !important;
     border-color: rgba(59, 130, 246, 0.35) !important;
     color: #3b82f6 !important;
   }
 
-  &[data-callout-metadata="gold"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="gold"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(234, 179, 8, 0.12) !important;
     border-color: rgba(234, 179, 8, 0.35) !important;
     color: #eab308 !important;
   }
 
-  &[data-callout-metadata="green"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="green"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(34, 197, 94, 0.12) !important;
     border-color: rgba(34, 197, 94, 0.35) !important;
     color: #22c55e !important;
   }
 
-  &[data-callout-metadata="purple"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="purple"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(168, 85, 247, 0.12) !important;
     border-color: rgba(168, 85, 247, 0.35) !important;
     color: #a855f7 !important;
   }
 
-  &[data-callout-metadata="cyan"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="cyan"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(6, 182, 212, 0.12) !important;
     border-color: rgba(6, 182, 212, 0.35) !important;
     color: #06b6d4 !important;
   }
 
-  &[data-callout-metadata="orange"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="orange"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(249, 115, 22, 0.12) !important;
     border-color: rgba(249, 115, 22, 0.35) !important;
     color: #f97316 !important;
   }
 
-  &[data-callout-metadata="gray"] .callout-content code:nth-of-type(2) {
+  &[data-callout-metadata="gray"] .callout-content p code:nth-of-type(2) {
     background-color: rgba(148, 163, 184, 0.12) !important;
     border-color: rgba(148, 163, 184, 0.35) !important;
     color: #94a3b8 !important;
   }
 }
+
 
 
 // 8. ПРОФИЛЬ ПЕРСОНАЖА ( Карточка [!profile-card] справа с обтеканием текстом )
