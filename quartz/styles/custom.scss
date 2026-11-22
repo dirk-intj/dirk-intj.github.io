@@ -703,7 +703,12 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       padding: 0 !important;
       margin: 0 !important;
 
-      li {
+            li {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: wrap !important;
+        gap: 0.35rem !important;
         font-size: 1.05rem !important;
         line-height: 1.5 !important;
         padding: 0.4rem 0 !important;
@@ -723,16 +728,19 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           padding-top: 0 !important;
         }
 
+        // Левая часть (название поля и эмодзи) прижимается влево
         strong {
           color: var(--dark) !important;
+          margin-right: auto !important;
         }
 
-        // Капсулы справа: и для текста в `кавычках`, и для кликабельных [[ссылок]]
+        // Убираем float: right — теперь капсулы аккуратно встают в ряд справа
         code,
         a {
-          float: right !important;
+          float: none !important;
+          display: inline-block !important;
           font-family: var(--bodyFont), sans-serif !important;
-          font-size: 1rem !important;
+          font-size: 0.95rem !important;
           padding: 0.05rem 0.5rem !important;
           border-radius: 5px !important;
           background-color: rgba(255, 255, 255, 0.06) !important;
@@ -742,12 +750,12 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           transition: border-color 0.2s ease, color 0.2s ease !important;
         }
 
-        // Подсветка кликабельной фамилии/ссылки красным при наведении
         a:hover {
           border-color: #D12630 !important;
           color: #D12630 !important;
         }
       }
+
     }
   }
 
