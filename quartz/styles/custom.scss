@@ -302,109 +302,127 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
 }
 
 
-// 6. ШКАЛА ПРОГРЕССА / ТАЙМЛАЙН ДЛЯ АРОК РОМАНА ( [!timeline] )
-.callout[data-callout="timeline"] {
+// 5. УНИВЕРСАЛЬНАЯ СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid|1..4] + [!card] )
+.callout[data-callout="grid"] {
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
   margin: 1.5rem 0 !important;
+  overflow: visible !important;
 
   & > .callout-title {
     display: none !important;
   }
 
-  & > .callout-content ul {
-    list-style: none !important;
-    padding-left: 1.5rem !important;
-    margin: 0 !important;
-    border-left: 2px solid var(--lightgray) !important;
+  // По умолчанию (просто > [!grid] или > [!grid|2]) — 2 колонки
+  & > .callout-content {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    overflow: visible !important;
 
-    li {
-      position: relative !important;
-      background-color: var(--light) !important;
-      border: 1px solid var(--lightgray) !important;
-      border-radius: 10px !important;
-      padding: 0.95rem 1.25rem !important;
-      margin-bottom: 0.85rem !important;
-      font-size: 1rem !important; // 16px для текста комментария
-      line-height: 1.48 !important;
-      color: var(--darkgray) !important;
-      transition: border-color 0.2s ease !important;
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important;
+    }
+  }
 
-      &:hover {
-        border-color: #D12630 !important;
-      }
+  // 1 колонка: > [!grid|1]
+  &[data-callout-metadata="1"] > .callout-content {
+    grid-template-columns: 1fr !important;
+  }
 
-      // Точка ровно по центру вертикальной линии слева
-      &::before {
-        content: "" !important;
-        position: absolute !important;
-        left: calc(-1.5rem - 6px) !important;
-        top: 1.4rem !important;
-        width: 10px !important;
-        height: 10px !important;
-        border-radius: 50% !important;
-        background-color: #D12630 !important;
-        border: 2px solid var(--light) !important;
-      }
+  // 3 колонки: > [!grid|3]
+  &[data-callout-metadata="3"] > .callout-content {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.85rem !important;
 
-      // 1. Название арки — крупно, под масштаб сайта (~19.2px)
-      strong {
-        color: var(--dark) !important;
-        font-size: 1.2rem !important;
-        font-weight: 600 !important;
-        vertical-align: middle !important;
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important;
+    }
+  }
 
-        @media (max-width: 600px) {
-          font-size: 1.1rem !important;
-        }
-      }
+  // 4 колонки: > [!grid|4]
+  &[data-callout-metadata="4"] > .callout-content {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.75rem !important;
 
-      // 2. Капсула СТАТУСА (*✅ готово*) — увеличена до ~16.8px
-      & > em:first-of-type {
-        font-style: normal !important;
-        font-size: 1.05rem !important;
-        font-weight: 500 !important;
-        padding: 0.2rem 0.65rem !important;
-        border-radius: 6px !important;
-        background-color: rgba(255, 255, 255, 0.06) !important;
-        border: 1px solid var(--lightgray) !important;
-        color: var(--dark) !important;
-        margin-left: 0.55rem !important;
-        vertical-align: middle !important;
-
-        @media (max-width: 600px) {
-          font-size: 0.95rem !important;
-        }
-      }
-
-      // 3. Счётчик ОБЪЁМА (`287 стр. · 103к слов`) — увеличен до ~16.8px
-      code {
-        float: right !important;
-        font-family: var(--bodyFont), sans-serif !important;
-        font-variant-numeric: tabular-nums !important;
-        font-size: 1.05rem !important;
-        padding: 0.2rem 0.65rem !important;
-        border-radius: 6px !important;
-        background-color: rgba(255, 255, 255, 0.04) !important;
-        border: 1px solid var(--lightgray) !important;
-        color: var(--darkgray) !important;
-
-        @media (max-width: 600px) {
-          float: none !important;
-          display: inline-block !important;
-          font-size: 0.95rem !important;
-          margin-top: 0.45rem !important;
-        }
-      }
-
-      // Отступ перед текстом комментария
-      br {
-        display: block !important;
-        content: "" !important;
-        margin-top: 0.55rem !important;
-      }
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr !important;
     }
   }
 }
 
+.callout[data-callout="card"] {
+  position: relative !important;
+  background-color: var(--light) !important;
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 10px !important;
+  padding: 1rem 1.25rem !important;
+  margin: 0 0 1rem 0 !important;
+  transition: border-color 0.2s ease, transform 0.2s ease !important;
+
+  .callout[data-callout="grid"] & {
+    margin-bottom: 0 !important;
+  }
+
+  // Эффекты при наведении на ЛЮБОЕ место карточки
+  &:hover {
+    border-color: #D12630 !important;
+    transform: translateY(-2px);
+    cursor: pointer;
+
+    .callout-title a,
+    .callout-title a.internal {
+      color: #D12630 !important;
+    }
+  }
+
+  .callout-icon {
+    display: none !important;
+  }
+
+  // Верхняя строка: заголовок
+  .callout-title {
+    display: block !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    color: var(--dark) !important;
+    margin-bottom: 0.35rem !important;
+
+    a {
+      text-decoration: none !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      color: var(--dark) !important;
+      transition: color 0.2s ease !important;
+
+      // Растягиваем кликабельную область ссылки на всю карточку
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  // Нижняя часть: комментарий-описание
+  .callout-content p {
+    font-size: 0.98rem !important;
+    line-height: 1.45 !important;
+    color: var(--darkgray) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+// Прячем всплывающий предпросмотр ТОЛЬКО при наведении на карточку
+body:has(.callout[data-callout="card"]:hover) > .popover {
+  display: none !important;
+}
