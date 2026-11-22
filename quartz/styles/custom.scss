@@ -737,10 +737,12 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         }
 
         // Убираем float: right — теперь капсулы аккуратно встают в ряд справа
+                // Обычные некликабельные значения (`Дирк`, `183 см`)
         code,
         a {
           float: none !important;
           display: inline-block !important;
+          margin-left: auto !important;
           font-family: var(--bodyFont), sans-serif !important;
           font-size: 0.95rem !important;
           padding: 0.05rem 0.5rem !important;
@@ -749,14 +751,29 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           border: 1px solid var(--lightgray) !important;
           color: var(--dark) !important;
           text-decoration: none !important;
-          transition: border-color 0.2s ease, color 0.2s ease !important;
-          margin-left: auto !important;
+          transition: all 0.2s ease !important;
         }
 
-        a:hover {
-          border-color: #D12630 !important;
-          color: #D12630 !important;
+        // Выделяем КЛИКАБЕЛЬНЫЕ ссылки (`[[Террамайн]]`) как интерактивные теги
+        a {
+          color: #D12630 !important; // Фирменный красный текст
+          border-color: rgba(209, 38, 48, 0.4) !important; // Тонкая красноватая рамка
+          background-color: rgba(209, 38, 48, 0.06) !important; // Едва заметный красный оттенок
+
+          // Аккуратная мини-стрелочка справа, подсказывающая, что сюда можно нажать
+          &::after {
+            content: " ↗";
+            font-size: 0.8em;
+            opacity: 0.85;
+          }
+
+          &:hover {
+            background-color: #D12630 !important; // При наведении капсула заливается красным
+            border-color: #D12630 !important;
+            color: #ffffff !important; // А текст становится белым
+          }
         }
+
       }
 
     }
