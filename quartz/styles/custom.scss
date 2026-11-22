@@ -703,6 +703,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     padding: 0.45rem 0.75rem !important;
     background-color: rgba(209, 38, 48, 0.08) !important;
     border-color: rgba(209, 38, 48, 0.35) !important;
+    font-family: var(--codeFont), monospace !important;
 
     p, strong {
       margin: 0 !important;
