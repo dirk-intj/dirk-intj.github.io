@@ -193,17 +193,17 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
   }
 }
  
-// Сжимаем пустое место под «Обратными ссылками» при сворачивании списка
-.backlinks {
-  &:has(.collapsed),
-  &:has([aria-expanded="false"]),
-  &.collapsed {
-    ul,
-    .overflow {
-      display: none !important;
-    }
+// Режим чтения («книжечка»): ужимаем ТОЛЬКО правый сайдбар, оставляя левый и центр на месте
+.page > #quartz-body:has(.sidebar.right.collapsed),
+.page > #quartz-body:has(.collapsed) {
+  grid-template-columns: 320px 1fr 40px !important; // Сжимаем правую колонку до узкой полоски (40px), чтобы её можно было вернуть наведением
+
+  // При наведении мыши на правую область — плавно возвращаем правый сайдбар
+  &:has(.sidebar.right:hover) {
+    grid-template-columns: 320px 1fr 320px !important;
   }
 }
+
 
 
 
