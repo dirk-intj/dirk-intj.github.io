@@ -195,29 +195,7 @@ h1, h2, h3, h4, h5, h6, .folder-title, .page-title {
  
 
 
-// 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
-.callout[data-callout="grid"] {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 1.5rem 0 !important;
-  overflow: visible !important; // Чтобы верхняя рамка карточек не обрезалась при подъёме
 
-  & > .callout-title {
-    display: none !important;
-  }
-
-  & > .callout-content {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; // 2 колонки в ряд на ПК
-    gap: 1rem !important;
-    overflow: visible !important;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr !important; // 1 колонка на телефоне
-    }
-  }
-}
 
 // 5. СЕТКА И ПЛАШКИ-ВИТРИНЫ ( [!grid] + [!card] )
 .callout[data-callout="grid"] {
@@ -694,6 +672,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
     }
   }
 
+    
     // 3. Нижняя плашка: статы (Имя, Фамилия, ДР, рост, вес)
   .callout[data-callout="stats-box"] {
     padding: 0.85rem 1.1rem !important;
@@ -703,7 +682,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
       padding: 0 !important;
       margin: 0 !important;
 
-            li {
+      li {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
@@ -715,7 +694,6 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
         margin: 0 !important;
         border-bottom: 1px solid var(--lightgray) !important;
         color: var(--darkgray) !important;
-        
 
         @media (max-width: 600px) {
           font-size: 1rem !important;
@@ -729,25 +707,27 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           padding-top: 0 !important;
         }
 
-        // Левая часть (название поля и эмодзи) прижимается влево
-        strong {
+        // Название поля слева (Имя, Фамилия, ДР) — без авто-отступов, которые ломали правый край
+        & > strong {
           color: var(--dark) !important;
-          margin-right: auto !important;
-          
+          font-weight: 700 !important;
         }
 
-        // Убираем float: right — теперь капсулы аккуратно встают в ряд справа
-                // Обычные некликабельные значения (`Дирк`, `183 см`)
-                // Обычные значения (`Дирк`, `183 см`) и ссылки (`[[Террамайн]]`)
+        // Любые облачка справа (жирные или обычные, ссылки или код) — одинаково прижаты вправо
+        code,
+        a,
+        a.internal,
+        & > strong:has(code, a) {
+          float: none !important;
+          display: inline-block !important;
+          margin-left: auto !important;
+        }
+
         code,
         a,
         a.internal {
-          float: none !important;
-          display: inline-block !important;
-          margin-left: auto !important; // Жёстко держим по правому краю и на ПК, и на мобилке
           font-family: var(--bodyFont), sans-serif !important;
           font-size: 0.95rem !important;
-          font-weight: 500 !important;
           padding: 0.05rem 0.5rem !important;
           border-radius: 5px !important;
           background-color: rgba(255, 255, 255, 0.06) !important;
@@ -755,9 +735,16 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
           color: var(--dark) !important;
           text-decoration: none !important;
           transition: all 0.2s ease !important;
+
+          // Честная жирность для любого текста внутри облачка
+          strong {
+            font-weight: 700 !important;
+            color: inherit !important;
+            margin: 0 !important;
+          }
         }
 
-        // Выделяем КЛИКАБЕЛЬНЫЕ ссылки (`[[Террамайн]]`) как красные интерактивные теги везде
+        // Красный стиль для кликабельных ссылок (фамилий)
         a,
         a.internal {
           color: #D12630 !important;
@@ -777,12 +764,10 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
             color: #ffffff !important;
           }
         }
-
-
       }
-
     }
   }
+
 
 }
 
