@@ -801,6 +801,7 @@ body:has(.callout[data-callout="card"]:hover) > .popover {
   }
 }
 
+// Телеграм баннер
 
 a.tg-banner {
   display: flex !important;
@@ -838,7 +839,7 @@ a.tg-banner {
     flex-shrink: 0 !important;
   }
 
-  .tg-banner-text {
+    .tg-banner-text {
     display: block !important;
     flex: 1 !important;
 
@@ -846,17 +847,17 @@ a.tg-banner {
       display: flex !important;
       align-items: center !important;
       flex-wrap: wrap !important;
-      gap: 0.45rem !important;
+      gap: 0.5rem !important;
       font-weight: 600 !important;
-      font-size: 1rem !important;
+      font-size: 1.15rem !important; // Крупный заголовок карточек
       color: var(--dark) !important;
-      margin-bottom: 0.15rem !important;
+      margin-bottom: 0.25rem !important;
 
       .tg-tag {
         font-family: var(--codeFont), monospace !important;
-        font-size: 0.8rem !important;
+        font-size: 0.95rem !important; // Ровный размер облачка, как в тексте
         font-weight: 400 !important;
-        padding: 0.05rem 0.4rem !important;
+        padding: 0.08rem 0.45rem !important;
         border-radius: 5px !important;
         border: 1px solid rgba(209, 38, 48, 0.45) !important;
         color: #D12630 !important;
@@ -865,10 +866,11 @@ a.tg-banner {
 
     .tg-banner-desc {
       display: block !important;
-      font-size: 0.88rem !important;
+      font-size: 1rem !important; // Читаемый крупный подзаголовок (16px)
       color: var(--darkgray) !important;
-      line-height: 1.35 !important;
+      line-height: 1.4 !important;
     }
   }
+
 }
 
